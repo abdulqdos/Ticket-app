@@ -35,6 +35,7 @@ export default function Register() {
             data={phone}
             setData={() => setPhone}
             placeholder={"رقم الهاتف"}
+            icon='phone-portrait-outline'
           />
 
 
@@ -49,12 +50,14 @@ export default function Register() {
             data={firstName}
             setData={() => setFirstName}
             placeholder={"الاسم الاول"}
+            icon="person-outline"
           />
 
           <Input
             data={lastName}
             setData={() => setLastName}
             placeholder={"الاسم الاخير"}
+            icon="person-outline"
           />
 
   
@@ -62,12 +65,14 @@ export default function Register() {
             data={password}
             setData={() => setPassword}
             placeholder={"كلمة المرور"}
+            icon="lock-closed-outline"
           />
 
           <Input
             data={confirmPassword}
             setData={() => setConfirmPassword}
             placeholder={"تاكيد كلمة المرور"}
+            icon="lock-open-outline"
           />
   
         </View>

@@ -30,12 +30,15 @@ export default function Login() {
           data={phone}
           setData={() => setPhone}
           placeholder={"رقم الهاتف"}
+          icon="phone-portrait-outline"
+
         />
 
         <Input
           data={password}
           setData={() => setPassword}
           placeholder={"كلمة المرور"}
+          icon="key-outline"
         />
 
       </View>
