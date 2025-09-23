@@ -21,7 +21,7 @@ export default function Splash() {
       useEffect(() => {
         const time = setTimeout(() => {
             // @ts-ignore
-            return router.replace("/(tabs)");
+            return router.replace("/(auth)/Login");
         }, 2000);
     }, []);
 

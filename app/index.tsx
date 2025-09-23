@@ -1,21 +1,37 @@
-// redirect to splash
-
-import { Text, View } from "react-native";
 import {
-    Redirect
-} from "expo-router";
+  Tajawal_200ExtraLight,
+  Tajawal_300Light,
+  Tajawal_400Regular,
+  Tajawal_500Medium,
+  Tajawal_700Bold,
+  Tajawal_800ExtraBold,
+  Tajawal_900Black,
+  useFonts,
+} from "@expo-google-fonts/tajawal";
+import { Redirect } from "expo-router";
+import { ActivityIndicator, Text, View } from "react-native";
 
 export default function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-        <Redirect href='/splash'>
-        </Redirect>
-    </View>
-  );
+  const [fontsLoaded] = useFonts({
+    Tajawal_200ExtraLight,
+    Tajawal_300Light,
+    Tajawal_400Regular,
+    Tajawal_500Medium,
+    Tajawal_700Bold,
+    Tajawal_800ExtraBold,
+    Tajawal_900Black,
+  });
+
+  if (!fontsLoaded) {
+    return (
+      <View className="flex-1 items-center justify-center bg-white">
+        <ActivityIndicator size="large" color="orange" />
+        <Text style={{ fontFamily: "Tajawal_500Medium", marginTop: 10 }}>
+          جاري التحميل...
+        </Text>
+      </View>
+    );
+  }
+
+  return <Redirect href="/splash" />;
 }
