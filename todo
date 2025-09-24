@@ -1,11 +1,38 @@
 UI UX
 
 Navigation & Layout :
-    - Tabs
-    - Splash Screens
+    - Tabs => (In_progress)
+    - Splash Screens => (Pending)
     
 Auth :
-    - Login 
+    - Login  
+        1 - UI Desgine => (Completed)
+        2 - Creat Context => (Pending)
+        3 - Api Integertion => (Pending)
+    
     - Signup
+        1 - UI Desgine => (Completed)
+        2 - Creat Context => (Pending)
+        3 - Api Integertion => (Pending)
+    
     - Forgget the password
+        1 - UI Desgine => (Completed)
+        2 - Creat Context => (Pending)
+        3 - Api Integertion => (Pending)
 
+
+Constant Models :
+    - Customer => (Completed)
+    - Event => (Pending)
+    - Ticket Type => (Pending)
+    - Ticket => (Pending)
+    - City => (Pending)
+    - Compeny => (Pending)
+
+Pages :
+
+    - Home Page :
+        A lot todo
+
+    - Profile : 
+        A lot todo

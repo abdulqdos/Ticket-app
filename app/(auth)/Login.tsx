@@ -14,6 +14,13 @@ export default function Login() {
   const router = useRouter();
 
   const handleLogin = () => {
+    
+    // APi Calling but Fn lets make it hard coded one
+
+    // Clear all previous errors
+    setPhoneError("");
+    setPasswordError("");
+
     // Validation
     if (!phone || !password) {
       setPhoneError(!phone ? "رقم الهاتف مطلوب" : "");
@@ -72,6 +79,7 @@ export default function Login() {
             isError={passwordError !== ""}
             placeholder={"كلمة المرور"}
             icon="key-outline"
+            secureTextEntry={true}
           />
 
         {passwordError !== "" && <ErrorMessage message={passwordError} />}
