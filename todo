@@ -20,6 +20,15 @@ Auth :
         2 - Creat Context => (Pending)
         3 - Api Integertion => (Pending)
 
+       - Verify Code
+        1 - UI Desgine => (Completed)
+        2 - Creat Context => (Pending)
+        3 - Api Integertion => (Pending)
+
+       - Reset Password
+            1 - UI Desgine => (In_progress)
+            2 - Creat Context => (Pending)
+            3 - Api Integertion => (Pending)
 
 Constant Models :
     - Customer => (Completed)
@@ -36,3 +45,8 @@ Pages :
 
     - Profile : 
         A lot todo
+
+
+
+Proplems :
+    - Verfiy Code Page the dir is  rtl but the dir must be ltr => (pending) 

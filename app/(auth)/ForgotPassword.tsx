@@ -1,0 +1,60 @@
+import { Ionicons } from "@expo/vector-icons"; // مثال لمكتبة الأيقونات
+import { useRouter } from "expo-router";
+import { useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import Button from "../components/Button";
+import ErrorMessage from "../components/ErrorMessage";
+import Input from "../components/Input";
+import Arrow from "../components/Icons/Arrow";
+
+export default function ForgotPassword() {
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
+  const router = useRouter();
+
+  const handleLogin = () => {
+      setPhoneError("");
+
+     if (typeof phone !== "string" || !/^\d{10,15}$/.test(phone)) {
+      setPhoneError("رقم الهاتف غير صالح");
+      return;
+    }
+
+
+    router.push("/(auth)/VerifyCode");
+  };
+
+  return (
+    <View className="flex-1 bg-white justify-center px-6 min-w-full">
+      <Arrow url={"/(auth)/Login"} />
+
+      <Text className="text-primary text-3xl font-bold text-center mb-10">
+        Tickets App
+      </Text>
+
+      <View className="flex-row justify-center mt-4">
+        <View className="flex gap-2 min-w-full px-2">
+          <View>
+            <Text className="text-gray-700 font-semibold mb-2">رقم الهاتف</Text>
+
+            <Input
+              data={phone}
+              setData={setPhone}
+              isError={phoneError !== ""}
+              placeholder={"أدخل رقم الهاتف"}
+              icon="phone-portrait-outline"
+            />
+
+            {phoneError !== "" && <ErrorMessage message={phoneError} />}
+          </View>
+
+          <Button
+            title={"استعادة كلمة المرور"}
+            handleSubmit={handleLogin}
+            disabled={phone === ""}
+          />
+        </View>
+      </View>
+    </View>
+  );
+}
