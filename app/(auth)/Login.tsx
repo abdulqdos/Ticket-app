@@ -59,6 +59,13 @@ export default function Login() {
         مرحبا بك مجددًا
       </Text>
 
+      <View className="flex-row justify-center pb-2">
+        <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
+        <TouchableOpacity onPress={() => router.replace("/(auth)/ForgotPassword")}>
+          <Text className="text-link underline font-semibold">استعادة كلمة المرور</Text>
+        </TouchableOpacity>
+      </View>
+      
       <View className="flex gap-4">
         <View>
           <Input
