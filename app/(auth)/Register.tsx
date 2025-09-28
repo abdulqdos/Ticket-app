@@ -1,6 +1,8 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
+import AuthFooter from "../components/Auth/AuthFooter";
+import AuthHeader from "../components/Auth/AuthHeader";
 import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
 import Input from "../components/Input";
@@ -89,9 +91,7 @@ export default function Register() {
         Tickets App
       </Text>
 
-      <Text className="text-primary text-xl font-semibold mb-6 text-center">
-        إنشاء حساب جديد
-      </Text>
+      <AuthHeader title= "إنشاء حساب جديد" description="خطوات بسيطة لحجز تذكرتك" />
 
       <View className="flex gap-4">
         <View>
@@ -166,13 +166,7 @@ export default function Register() {
       </View>
 
       <Button title={"إنشاء حساب"} handleSubmit={handleRegister} />
-
-      <View className="flex-row justify-center mt-4">
-        <Text className="text-gray-500">لديك حساب ؟ </Text>
-        <TouchableOpacity onPress={() => router.replace("/(auth)/Login")}>
-          <Text className="text-primary font-semibold">تسجيل الدخول </Text>
-        </TouchableOpacity>
-      </View>
+      <AuthFooter  title="لديك حساب ؟" urlTitle="تسجيل دخول" url="/(auth)/Login" />
     </View>
   );
 }
