@@ -10,7 +10,7 @@ export default function AuthHeader({
 }) {
   return (
     <>
-      <View className="items-center py-10 absolute top-20 left-0 right-0">
+      <View className="items-center py-20">
         <Text className="text-primary text-3xl font-bold">Tickets App</Text>
       </View>
       <View className="my-6 gap-2">
