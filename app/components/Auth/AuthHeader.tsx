@@ -9,13 +9,18 @@ export default function AuthHeader({
   description?: string;
 }) {
   return (
-    <View className="mb-6 gap-2">
-      <Text className="text-primary text-2xl font-semibold  text-center">
-        {title || "مرحبًا بك مجددًا"}
-      </Text>
-      <Text className="text-textGray text-center">
-        {description || "سجل الدخول إلى حسابك"}
-      </Text>
-    </View>
+    <>
+      <View className="items-center py-10 absolute top-20 left-0 right-0">
+        <Text className="text-primary text-3xl font-bold">Tickets App</Text>
+      </View>
+      <View className="my-6 gap-2">
+        <Text className="text-primary text-2xl font-semibold  text-center">
+          {title || "مرحبًا بك مجددًا"}
+        </Text>
+        <Text className="text-textGray text-center">
+          {description || "سجل الدخول إلى حسابك"}
+        </Text>
+      </View>
+    </>
   );
 }

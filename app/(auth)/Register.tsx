@@ -87,10 +87,7 @@ export default function Register() {
 
   return (
     <View className="flex-1 bg-white justify-center px-6">
-      <Text className="text-primary text-3xl font-bold text-center mb-10">
-        Tickets App
-      </Text>
-
+     
       <AuthHeader title= "إنشاء حساب جديد" description="خطوات بسيطة لحجز تذكرتك" />
 
       <View className="flex gap-4">

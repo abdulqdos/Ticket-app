@@ -5,6 +5,7 @@ import { OtpInput } from "react-native-otp-entry";
 import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
 import Arrow from "../components/Icons/Arrow";
+import AuthHeader from "../components/Auth/AuthHeader";
 
 export default function VerifyCode() {
   const [code, setCode] = useState("");
@@ -16,6 +17,7 @@ export default function VerifyCode() {
 
     if (code !== "123456") {
       setCodeError("الكود غير صحيح يرجى إعادة المحاولة");
+      return ;
     }
 
       router.push("/(auth)/ResetPassword");
@@ -25,9 +27,7 @@ export default function VerifyCode() {
     <View className="flex-1 bg-white justify-center px-6 min-w-full">
       <Arrow url={"/(auth)/ForgotPassword"} />
 
-      <Text className="text-primary text-3xl font-bold text-center mb-10">
-        Tickets App
-      </Text>
+      <AuthHeader title= "أدخل رمز التحقق" description="لقد قمنا بإرسال رمز التحقق إلى رقم هاتفك" />
 
       <View className="flex-row justify-center mt-4">
         <View

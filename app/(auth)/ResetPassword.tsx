@@ -5,6 +5,7 @@ import { Customer } from "../../constants/customer";
 import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
 import Input from "../components/Input";
+import AuthHeader from "../components/Auth/AuthHeader";
 
 export default function ResetPassword() {
     const [password, setPassword] = useState(Customer.passowrd);
@@ -40,15 +41,8 @@ export default function ResetPassword() {
   
     return (
       <View className="flex-1 bg-white justify-center px-6">
-        <Text className="text-primary text-3xl font-bold text-center mb-10">
-          Tickets App
-        </Text>
-  
-        <Text className="text-primary text-xl font-semibold mb-6 text-center">
-          كلمة المرور الجديدة
-        </Text>
-  
-      
+        
+          <AuthHeader title= "تغيير كلمة المرور" description="أدخل كلمة مرور جديدة لحسابك" />
         <View className="flex gap-4">
          <View>
             <Input
@@ -56,7 +50,7 @@ export default function ResetPassword() {
               setData={setPassword}
               isError={passwordError !== ""}
               placeholder={"كلمة المرور الجديدة"}
-              icon="key-outline"
+              icon="lock-closed-outline"
               secureTextEntry={true}
             />
           </View>
@@ -64,10 +58,10 @@ export default function ResetPassword() {
           <View>
             <Input
               data={confirmPassword}
-              setData={setPassword}
+              setData={setConfirmPassword}
               isError={passwordError !== ""}
               placeholder={"تأكيد كلمة المرور الجديدة"}
-              icon="key-outline"
+              icon="lock-open-outline"
               secureTextEntry={true}
             />
   

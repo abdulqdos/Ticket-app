@@ -52,9 +52,7 @@ export default function Login() {
 
   return (
     <View className="relative flex-1 justify-center bg-white px-6">
-      <View className="items-center mt-10 mb-10 absolute top-10 left-0 right-0">
-        <Text className="text-primary text-3xl font-bold">Tickets App</Text>
-      </View>
+    
 
      <AuthHeader title= "مرحبًا بك مجددًا" description="سجل الدخول إلى حسابك" />
 
@@ -85,7 +83,7 @@ export default function Login() {
         <View className="flex-row justify-center py-2">
           <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
           <TouchableOpacity
-            onPress={() => router.replace("/(auth)/ForgotPassword")}
+            onPress={() => router.push("/(auth)/ForgotPassword")}
           >
             <Text className="text-link underline font-semibold">
               استعادة كلمة المرور
