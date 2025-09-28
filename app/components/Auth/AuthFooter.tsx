@@ -13,7 +13,7 @@ export default function AuthFooter({
   const router = useRouter();
 
   return (
-    <View className="flex-row justify-center mt-4 gap-2">
+    <View className="flex-row justify-center mt-4">
       <Text className="text-textGray">{title}</Text>
       <TouchableOpacity
         onPress={() => router.replace((url ? url : "/(auth)") as any)}

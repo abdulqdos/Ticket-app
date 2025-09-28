@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function Index() {
+export default function Profile() {
   return (
     <View className="page">
-      <Text>Home</Text>
+      <Text>Profile</Text>
     </View>
   )
 }

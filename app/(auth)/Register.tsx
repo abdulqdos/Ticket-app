@@ -1,8 +1,7 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Text, View } from "react-native";
-import AuthFooter from "../components/Auth/AuthFooter";
-import AuthHeader from "../components/Auth/AuthHeader";
+import {AuthHeader  , AuthFooter} from "../components/Auth";
 import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
 import Input from "../components/Input";

@@ -2,11 +2,10 @@ import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Customer } from "../../constants/customer";
+import { AuthFooter, AuthHeader } from "../components/Auth";
 import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
 import Input from "../components/Input";
-import AuthHeader from "../components/Auth/AuthHeader";
-import AuthFooter from "../components/Auth/AuthFooter";
 
 export default function Login() {
   const [phone, setPhone] = useState(Customer.phone);
@@ -52,9 +51,7 @@ export default function Login() {
 
   return (
     <View className="relative flex-1 justify-center bg-white px-6">
-    
-
-     <AuthHeader title= "مرحبًا بك مجددًا" description="سجل الدخول إلى حسابك" />
+      <AuthHeader title="مرحبًا بك مجددًا" description="سجل الدخول إلى حسابك" />
 
       <View className="flex gap-4">
         <View>
@@ -93,7 +90,11 @@ export default function Login() {
       </View>
 
       <Button title={"تسجيل الدخول"} handleSubmit={handleLogin} />
-      <AuthFooter  title="ليس لديك حساب ؟" urlTitle="إنشاء حساب" url="/(auth)/Register" />
+      <AuthFooter
+        title="ليس لديك حساب ؟"
+        urlTitle="إنشاء حساب"
+        url="/(auth)/Register"
+      />
     </View>
   );
 }

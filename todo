@@ -1,7 +1,5 @@
-UI UX
-
 Navigation & Layout :
-    - Tabs => (In_progress)
+    - Tabs => (Completed)
     - Splash Screens => (Pending)
     
 Auth :
@@ -36,23 +34,54 @@ Auth :
             - Success Register
             - Success Verify Code
             - Success Reset Password => This most be important after he reset he loggin agani to make him sure for password
+
+Pages :
+    - Home Page :
+        - Tab Icon (Completed)
+        - Add Header (Pending)
+        - Search bar (Pending)
+        - Body (featured , Latest , Most Poplar) => (Pending)
+
+    - Search Page :
+        - Search Bar => (PeData : 
+    - Create a file have dumb data to test => (Pending)
+
+Ui UX :
+    - We Need Logo nding)
+        - Body (0 / 3)
+            1 - All Events => (Pending)
+            2 -  Events u search => (Pending)
+            3 - Empty State => (Pending)
+
+    - Tickets Page :
+        - Display All Customer Tickets => (Pending)
+        - Empty State  => (Pending)
+
+    - Profile : 
+        - Main Data => (Pending)
+        - Setting => (Pending)
+        - A lot todo
+
+
+Context : 
+    - useAuth => (Pending)
+    - useTheme => (Pending)
+    - lang (optional)
+
 Constant Models :
     - Customer => (Completed)
+    - Colors => (Completed)
     - Event => (Pending)
     - Ticket Type => (Pending)
     - Ticket => (Pending)
     - City => (Pending)
     - Compeny => (Pending)
 
-Pages :
+Data : 
+    - Create a file have dumb data to test => (Pending)
 
-    - Home Page :
-        A lot todo
-
-    - Profile : 
-        A lot todo
-
-
+Ui UX :
+    - We Need Logo 
 
 Proplems :
     - Verfiy Code Page the dir is  rtl but the dir must be ltr => (pending) 
