@@ -7,11 +7,11 @@ module.exports = {
     extend: {
       colors: {
         primary: "#0a0a0a",
-        textGray: "#8C8C8C",          
-        grayLight: "#D9D9D9",  
+        textGray: "#808080",
+        grayLight: "#D9D9D9",
         link: "#3B82F6",
         blue: "#0000ff",
-        success: "#474747"
+        success: "#474747",
       },
       plugins: [],
     },

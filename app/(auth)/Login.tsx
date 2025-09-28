@@ -5,6 +5,8 @@ import { Customer } from "../../constants/customer";
 import Button from "../components/Button";
 import ErrorMessage from "../components/ErrorMessage";
 import Input from "../components/Input";
+import AuthHeader from "../components/Auth/AuthHeader";
+import AuthFooter from "../components/Auth/AuthFooter";
 
 export default function Login() {
   const [phone, setPhone] = useState(Customer.phone);
@@ -14,7 +16,6 @@ export default function Login() {
   const router = useRouter();
 
   const handleLogin = () => {
-    
     // APi Calling but Fn lets make it hard coded one
 
     // Clear all previous errors
@@ -42,7 +43,7 @@ export default function Login() {
     if (phone !== "0916050468" || password !== "123456") {
       setPhoneError("رقم الهاتف او كلمة المرور غير صحيحة");
       setPasswordError("رقم الهاتف او كلمة المرور غير صحيحة");
-      return ;
+      return;
     }
 
     // Redirect
@@ -50,22 +51,11 @@ export default function Login() {
   };
 
   return (
-    <View className="flex-1 bg-white justify-center px-6">
-      <Text className="text-primary text-3xl font-bold text-center mb-10">
-        Tickets App
-      </Text>
+    <View className="relative flex-1 justify-center bg-white px-6">
+    
 
-      <Text className="text-primary text-xl font-semibold mb-6 text-center">
-        مرحبا بك مجددًا
-      </Text>
+     <AuthHeader title= "مرحبًا بك مجددًا" description="سجل الدخول إلى حسابك" />
 
-      <View className="flex-row justify-center pb-2">
-        <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
-        <TouchableOpacity onPress={() => router.replace("/(auth)/ForgotPassword")}>
-          <Text className="text-link underline font-semibold">استعادة كلمة المرور</Text>
-        </TouchableOpacity>
-      </View>
-      
       <View className="flex gap-4">
         <View>
           <Input
@@ -75,7 +65,6 @@ export default function Login() {
             placeholder={"رقم الهاتف"}
             icon="phone-portrait-outline"
           />
-
           {phoneError !== "" && <ErrorMessage message={phoneError} />}
         </View>
 
@@ -88,19 +77,23 @@ export default function Login() {
             icon="key-outline"
             secureTextEntry={true}
           />
+          {passwordError !== "" && <ErrorMessage message={passwordError} />}
+        </View>
 
-        {passwordError !== "" && <ErrorMessage message={passwordError} />}
+        <View className="flex-row justify-center py-2">
+          <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
+          <TouchableOpacity
+            onPress={() => router.push("/(auth)/ForgotPassword")}
+          >
+            <Text className="text-link underline font-semibold">
+              استعادة كلمة المرور
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
 
       <Button title={"تسجيل الدخول"} handleSubmit={handleLogin} />
-
-      <View className="flex-row justify-center mt-4">
-        <Text className="text-gray-500">ليس لديك حساب؟ </Text>
-        <TouchableOpacity onPress={() => router.replace("/(auth)/Register")}>
-          <Text className="text-primary font-semibold">إنشاء حساب</Text>
-        </TouchableOpacity>
-      </View>
+      <AuthFooter  title="ليس لديك حساب ؟" urlTitle="إنشاء حساب" url="/(auth)/Register" />
     </View>
   );
 }

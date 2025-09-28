@@ -30,6 +30,7 @@ export default function Input({
         textAlign="right"
       />
 
+
       <Ionicons name={icon} size={20} color="#999" />
     </View>
   );

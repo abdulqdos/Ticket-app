@@ -26,10 +26,16 @@ Auth :
         3 - Api Integertion => (Pending)
 
        - Reset Password
-            1 - UI Desgine => (In_progress)
+            1 - UI Desgine => (Completed)
             2 - Creat Context => (Pending)
             3 - Api Integertion => (Pending)
 
+    - Auth Notification (Toaster)
+        - Add Toster When he :
+            - Success loggin
+            - Success Register
+            - Success Verify Code
+            - Success Reset Password => This most be important after he reset he loggin agani to make him sure for password
 Constant Models :
     - Customer => (Completed)
     - Event => (Pending)
@@ -50,3 +56,5 @@ Pages :
 
 Proplems :
     - Verfiy Code Page the dir is  rtl but the dir must be ltr => (pending) 
+
+
