@@ -38,20 +38,13 @@ Auth :
 Pages :
     - Home Page :
         - Tab Icon (Completed)
-        - Add Header (Pending)
-        - Search bar (Pending)
+        - Add Header (Completed)
+        - Search bar (In_progress)
         - Body (featured , Latest , Most Poplar) => (Pending)
 
     - Search Page :
-        - Search Bar => (PeData : 
-    - Create a file have dumb data to test => (Pending)
-
-Ui UX :
-    - We Need Logo nding)
-        - Body (0 / 3)
-            1 - All Events => (Pending)
-            2 -  Events u search => (Pending)
-            3 - Empty State => (Pending)
+        - Search Bar => (Pending): 
+        - Create a file have dumb data to test => (Pending)
 
     - Tickets Page :
         - Display All Customer Tickets => (Pending)
@@ -62,7 +55,12 @@ Ui UX :
         - Setting => (Pending)
         - A lot todo
 
+    - Body (0 / 3)
+            1 - All Events => (Pending)
+            2 -  Events u search => (Pending)
+            3 - Empty State => (Pending)
 
+        
 Context : 
     - useAuth => (Pending)
     - useTheme => (Pending)
@@ -81,7 +79,7 @@ Data :
     - Create a file have dumb data to test => (Pending)
 
 Ui UX :
-    - We Need Logo 
+    - We Need Logo (Pending)
 
 Proplems :
     - Verfiy Code Page the dir is  rtl but the dir must be ltr => (pending) 

@@ -1,11 +1,10 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import { OtpInput } from "react-native-otp-entry";
-import Button from "../components/Button";
-import ErrorMessage from "../components/ErrorMessage";
-import Arrow from "../components/Icons/Arrow";
-import AuthHeader from "../components/Auth/AuthHeader";
+import {  AuthHeader } from "../components/Auth";
+import{ Button , ErrorMessage  }from "@/app/components/ui/Form";
+import {BackArrow} from "@/app/components/ui/Icons";
 
 export default function VerifyCode() {
   const [code, setCode] = useState("");
@@ -17,25 +16,24 @@ export default function VerifyCode() {
 
     if (code !== "123456") {
       setCodeError("الكود غير صحيح يرجى إعادة المحاولة");
-      return ;
+      return;
     }
 
-      router.push("/(auth)/ResetPassword");
+    router.push("/(auth)/ResetPassword");
   };
 
   return (
     <View className="flex-1 bg-white justify-center px-6 min-w-full">
-      <Arrow url={"/(auth)/ForgotPassword"} />
+      <BackArrow url={"/(auth)/ForgotPassword"} />
 
-      <AuthHeader title= "أدخل رمز التحقق" description="لقد قمنا بإرسال رمز التحقق إلى رقم هاتفك" />
+      <AuthHeader
+        title="أدخل رمز التحقق"
+        description="لقد قمنا بإرسال رمز التحقق إلى رقم هاتفك"
+      />
 
       <View className="flex-row justify-center mt-4">
-        <View
-          className="flex gap-2 min-w-full px-2"
-        >
+        <View className="flex gap-2 min-w-full px-2">
           <View>
-    
-
             {/* <Input
                 data={phone}
                 setData={setPhone}
@@ -44,7 +42,7 @@ export default function VerifyCode() {
                 icon="phone-portrait-outline"
               /> */}
             <OtpInput
-            // dirction="rtl"
+              // dirction="rtl"
               numberOfDigits={6}
               onTextChange={setCode}
               focusColor="blue"

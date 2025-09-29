@@ -1,11 +1,10 @@
+import { AuthFooter, AuthHeader } from "@/app/components/Auth";
+import{ Button , ErrorMessage , Input }from "@/app/components/ui/Form";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Customer } from "../../constants/customer";
-import { AuthFooter, AuthHeader } from "../components/Auth";
-import Button from "../components/Button";
-import ErrorMessage from "../components/ErrorMessage";
-import Input from "../components/Input";
+import Link from "@/app/components/ui/Link";
 
 export default function Login() {
   const [phone, setPhone] = useState(Customer.phone);
@@ -21,29 +20,29 @@ export default function Login() {
     setPhoneError("");
     setPasswordError("");
 
-    // Validation
-    if (!phone || !password) {
-      setPhoneError(!phone ? "رقم الهاتف مطلوب" : "");
-      setPasswordError(!password ? "كلمة المرور مطلوبة" : "");
-      return;
-    } else if (password.length < 6) {
-      setPasswordError("كلمة المرور يجب ان تكون اكثر من 6 احرف");
-      return;
-    } else if (typeof phone !== "string" || !/^\d{10,15}$/.test(phone)) {
-      setPhoneError("رقم الهاتف غير صالح");
-      return;
-    } else {
-      setPhoneError("");
-      setPasswordError("");
-    }
+    // // Validation
+    // if (!phone || !password) {
+    //   setPhoneError(!phone ? "رقم الهاتف مطلوب" : "");
+    //   setPasswordError(!password ? "كلمة المرور مطلوبة" : "");
+    //   return;
+    // } else if (password.length < 6) {
+    //   setPasswordError("كلمة المرور يجب ان تكون اكثر من 6 احرف");
+    //   return;
+    // } else if (typeof phone !== "string" || !/^\d{10,15}$/.test(phone)) {
+    //   setPhoneError("رقم الهاتف غير صالح");
+    //   return;
+    // } else {
+    //   setPhoneError("");
+    //   setPasswordError("");
+    // }
 
-    // Api Calling
-    console.log("Phone:", phone, "Password:", password);
-    if (phone !== "0916050468" || password !== "123456") {
-      setPhoneError("رقم الهاتف او كلمة المرور غير صحيحة");
-      setPasswordError("رقم الهاتف او كلمة المرور غير صحيحة");
-      return;
-    }
+    // // Api Calling
+    // console.log("Phone:", phone, "Password:", password);
+    // if (phone !== "0916050468" || password !== "123456") {
+    //   setPhoneError("رقم الهاتف او كلمة المرور غير صحيحة");
+    //   setPasswordError("رقم الهاتف او كلمة المرور غير صحيحة");
+    //   return;
+    // }
 
     // Redirect
     router.replace("/(tabs)");
@@ -79,13 +78,8 @@ export default function Login() {
 
         <View className="flex-row justify-center py-2">
           <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
-          <TouchableOpacity
-            onPress={() => router.push("/(auth)/ForgotPassword")}
-          >
-            <Text className="text-link underline font-semibold">
-              استعادة كلمة المرور
-            </Text>
-          </TouchableOpacity>
+          
+          <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword"/>
         </View>
       </View>
 

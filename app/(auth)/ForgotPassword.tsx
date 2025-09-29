@@ -1,12 +1,10 @@
-import { Ionicons } from "@expo/vector-icons"; // مثال لمكتبة الأيقونات
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
-import Button from "../components/Button";
-import ErrorMessage from "../components/ErrorMessage";
-import Input from "../components/Input";
-import Arrow from "../components/Icons/Arrow";
-import AuthHeader from "../components/Auth/AuthHeader";
+import { Text, View } from "react-native";
+import {AuthHeader} from "@/app/components/Auth";
+import{ Button , ErrorMessage , Input }from "@/app/components/ui/Form";
+import {BackArrow} from "@/app/components/ui/Icons";
+
 
 export default function ForgotPassword() {
   const [phone, setPhone] = useState("");
@@ -14,9 +12,9 @@ export default function ForgotPassword() {
   const router = useRouter();
 
   const handleLogin = () => {
-      setPhoneError("");
+    setPhoneError("");
 
-     if (typeof phone !== "string" || !/^\d{10,15}$/.test(phone)) {
+    if (typeof phone !== "string" || !/^\d{10,15}$/.test(phone)) {
       setPhoneError("رقم الهاتف غير صالح");
       return;
     }
@@ -26,8 +24,11 @@ export default function ForgotPassword() {
 
   return (
     <View className="flex-1 bg-white justify-center px-6 min-w-full">
-      <Arrow url={"/(auth)/Login"} />
-      <AuthHeader title= "يرجى إدخال رقم الهاتف" description="لاتقلق سنساعدك في إنشاء كلمة مرور جديدة" />
+      <BackArrow url={"/(auth)/Login"} />
+      <AuthHeader
+        title="يرجى إدخال رقم الهاتف"
+        description="لاتقلق سنساعدك في إنشاء كلمة مرور جديدة"
+      />
 
       <View className="flex-row justify-center mt-4">
         <View className="flex gap-2 min-w-full px-2">

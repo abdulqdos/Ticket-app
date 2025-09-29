@@ -1,6 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import { TextInput, View } from "react-native";
-
+import { colors } from "@/constants/colors";
 export default function Input({
   data,
   setData,
@@ -18,7 +18,7 @@ export default function Input({
 }) {
   return (
     <View
-      className={`flex-row items-center border rounded-xl px-3 py-1 ${isError ? " border-red-500" : " border-gray-300"}`}
+      className={`flex-row items-center border border-grayLight rounded-xl px-3 py-1 ${isError ? " border-red-500" : " border-gray-300"}`}
     >
       <TextInput
         className="flex-1 text-base"
@@ -31,7 +31,7 @@ export default function Input({
       />
 
 
-      <Ionicons name={icon} size={20} color="#999" />
+      <Ionicons name={icon} size={20} color={colors.textGray} />
     </View>
   );
 }

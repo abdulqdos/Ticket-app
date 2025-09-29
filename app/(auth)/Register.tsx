@@ -1,10 +1,8 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Text, View } from "react-native";
-import {AuthHeader  , AuthFooter} from "../components/Auth";
-import Button from "../components/Button";
-import ErrorMessage from "../components/ErrorMessage";
-import Input from "../components/Input";
+import { View } from "react-native";
+import { AuthFooter, AuthHeader } from "../components/Auth";
+import{ Button , ErrorMessage , Input }from "@/app/components/ui/Form";
 
 export default function Register() {
   // Form Inputs
@@ -86,8 +84,10 @@ export default function Register() {
 
   return (
     <View className="flex-1 bg-white justify-center px-6">
-     
-      <AuthHeader title= "إنشاء حساب جديد" description="خطوات بسيطة لحجز تذكرتك" />
+      <AuthHeader
+        title="إنشاء حساب جديد"
+        description="خطوات بسيطة لحجز تذكرتك"
+      />
 
       <View className="flex gap-4">
         <View>
@@ -141,7 +141,7 @@ export default function Register() {
             isError={passwordError !== ""}
             placeholder="كلمة المرور"
             icon="lock-closed-outline"
-            secureTextEntry  = {true}
+            secureTextEntry={true}
           />
           {passwordError !== "" && <ErrorMessage message={passwordError} />}
         </View>
@@ -153,7 +153,7 @@ export default function Register() {
             isError={confirmPasswordError !== ""}
             placeholder="تأكيد كلمة المرور"
             icon="lock-open-outline"
-            secureTextEntry  = {true}
+            secureTextEntry={true}
           />
           {confirmPasswordError !== "" && (
             <ErrorMessage message={confirmPasswordError} />
@@ -162,7 +162,11 @@ export default function Register() {
       </View>
 
       <Button title={"إنشاء حساب"} handleSubmit={handleRegister} />
-      <AuthFooter  title="لديك حساب ؟" urlTitle="تسجيل دخول" url="/(auth)/Login" />
+      <AuthFooter
+        title="لديك حساب ؟"
+        urlTitle="تسجيل دخول"
+        url="/(auth)/Login"
+      />
     </View>
   );
 }

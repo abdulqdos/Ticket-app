@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 .page {
-    @apply flex-1 justify-center items-center  bg-white;
+    @apply flex flex-1 justify-center items-center  bg-white;
 }

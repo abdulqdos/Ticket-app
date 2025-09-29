@@ -1,10 +1,19 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from "react";
+import { Text, View } from "react-native";
+import {Header , Search , Body } from "@/app/components/home";
+
 
 export default function Index() {
   return (
-    <View className="page">
-      <Text>Home</Text>
+    <View className="page gap-4">
+      <View className="flex flex-col w-full gap-4 pt-10  pb-4 px-4">
+        <Header />
+        <Search />
+      </View>
+
+      <View className="flex-1">
+        <Body />
+      </View>
     </View>
-  )
+  );
 }
