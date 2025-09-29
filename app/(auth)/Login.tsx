@@ -19,29 +19,29 @@ export default function Login() {
     setPhoneError("");
     setPasswordError("");
 
-    // Validation
-    if (!phone || !password) {
-      setPhoneError(!phone ? "رقم الهاتف مطلوب" : "");
-      setPasswordError(!password ? "كلمة المرور مطلوبة" : "");
-      return;
-    } else if (password.length < 6) {
-      setPasswordError("كلمة المرور يجب ان تكون اكثر من 6 احرف");
-      return;
-    } else if (typeof phone !== "string" || !/^\d{10,15}$/.test(phone)) {
-      setPhoneError("رقم الهاتف غير صالح");
-      return;
-    } else {
-      setPhoneError("");
-      setPasswordError("");
-    }
+    // // Validation
+    // if (!phone || !password) {
+    //   setPhoneError(!phone ? "رقم الهاتف مطلوب" : "");
+    //   setPasswordError(!password ? "كلمة المرور مطلوبة" : "");
+    //   return;
+    // } else if (password.length < 6) {
+    //   setPasswordError("كلمة المرور يجب ان تكون اكثر من 6 احرف");
+    //   return;
+    // } else if (typeof phone !== "string" || !/^\d{10,15}$/.test(phone)) {
+    //   setPhoneError("رقم الهاتف غير صالح");
+    //   return;
+    // } else {
+    //   setPhoneError("");
+    //   setPasswordError("");
+    // }
 
-    // Api Calling
-    console.log("Phone:", phone, "Password:", password);
-    if (phone !== "0916050468" || password !== "123456") {
-      setPhoneError("رقم الهاتف او كلمة المرور غير صحيحة");
-      setPasswordError("رقم الهاتف او كلمة المرور غير صحيحة");
-      return;
-    }
+    // // Api Calling
+    // console.log("Phone:", phone, "Password:", password);
+    // if (phone !== "0916050468" || password !== "123456") {
+    //   setPhoneError("رقم الهاتف او كلمة المرور غير صحيحة");
+    //   setPasswordError("رقم الهاتف او كلمة المرور غير صحيحة");
+    //   return;
+    // }
 
     // Redirect
     router.replace("/(tabs)");

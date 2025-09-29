@@ -9,10 +9,11 @@ export default function _layout() {
       screenOptions={{
         tabBarInactiveTintColor: colors.grayLight,
         tabBarActiveTintColor: colors.white,
+        tabBarHideOnKeyboard: false, 
         tabBarStyle: {
           backgroundColor: hexToRgba(colors.black , 0.7),
           marginHorizontal: 16,
-          marginBottom: 16,
+          marginBottom: 24,
           borderRadius: 12,
           borderTopWidth: 0,
           paddingTop: 8,
