@@ -5,16 +5,17 @@ import React from "react";
 
 export default function _layout() {
   return (
-    <Tabs
+    <Tabs                                                                                                                                                                                          
       screenOptions={{
         tabBarInactiveTintColor: colors.grayLight,
         tabBarActiveTintColor: colors.white,
         tabBarHideOnKeyboard: false, 
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: hexToRgba(colors.black , 0.7),
           marginHorizontal: 16,
           marginBottom: 24,
-          borderRadius: 12,
+          borderRadius: 50,
           borderTopWidth: 0,
           paddingTop: 8,
           paddingBottom: 8,

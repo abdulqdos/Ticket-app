@@ -4,7 +4,7 @@ import {Input} from "@/app/components/ui/Form";
 export default function Search() {
   const [search, setSearch] = useState('');
   return (
-    <View className="w-full my-2">
+    <View className="w-full mt-2">
       <Input 
         data={search} 
         setData={setSearch} 

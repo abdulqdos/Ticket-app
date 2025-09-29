@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Customer } from "../../constants/customer";
+import Link from "@/app/components/ui/Link";
 
 export default function Login() {
   const [phone, setPhone] = useState(Customer.phone);
@@ -77,13 +78,8 @@ export default function Login() {
 
         <View className="flex-row justify-center py-2">
           <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
-          <TouchableOpacity
-            onPress={() => router.push("/(auth)/ForgotPassword")}
-          >
-            <Text className="text-link underline font-semibold">
-              استعادة كلمة المرور
-            </Text>
-          </TouchableOpacity>
+          
+          <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword"/>
         </View>
       </View>
 
