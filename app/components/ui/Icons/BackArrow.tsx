@@ -3,7 +3,7 @@ import { useRouter } from "expo-router";
 import React from "react";
 import { TouchableOpacity } from "react-native";
 
-export default function Arrow({ url , size , color }: { url?: string , size?: number , color?: string}) {
+export default function BackArrow({ url , size , color }: { url?: string , size?: number , color?: string}) {
   const router = useRouter();
   return (
     <TouchableOpacity

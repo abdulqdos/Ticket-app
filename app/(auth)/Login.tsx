@@ -1,11 +1,9 @@
+import { AuthFooter, AuthHeader } from "@/app/components/Auth";
+import{ Button , ErrorMessage , Input }from "@/app/components/ui/Form";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 import { Customer } from "../../constants/customer";
-import { AuthFooter, AuthHeader } from "../components/Auth";
-import Button from "../components/Button";
-import ErrorMessage from "../components/ErrorMessage";
-import Input from "../components/Input";
 
 export default function Login() {
   const [phone, setPhone] = useState(Customer.phone);
