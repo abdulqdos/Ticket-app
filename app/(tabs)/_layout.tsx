@@ -14,15 +14,14 @@ export default function _layout() {
         tabBarStyle: {
           backgroundColor: hexToRgba(colors.black , 0.7),
           marginHorizontal: 16,
-          marginBottom: 24,
+          marginVertical: 8,
           borderRadius: 50,
           borderTopWidth: 0,
-          paddingTop: 8,
-          paddingBottom: 8,
+          paddingHorizontal: 16,
+          paddingVertical: 8,
           alignSelf: "center",
           alignItems: "center",
           justifyContent: "center",
-          height: 78,
           width: "95%",
           shadowColor: "transparent", // iOS
           shadowOpacity: 0,
@@ -30,9 +29,7 @@ export default function _layout() {
           shadowRadius: 0,
           elevation: 0, // Android
         },
-        tabBarIconStyle: {
-          marginTop: 4,
-        },
+        tabBarLabelStyle: { fontSize: 8 },   
       }}
     >
       <Tabs.Screen
@@ -52,6 +49,16 @@ export default function _layout() {
           tabBarLabel: "بحث",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="search" color={color} size={size} />
+          ),
+        }}
+      />
+        <Tabs.Screen
+        name="Favorites"
+        options={{
+          headerShown: false,
+          tabBarLabel: "المفضلة",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="heart" color={color} size={size} />
           ),
         }}
       />
