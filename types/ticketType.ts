@@ -1,4 +1,4 @@
-export interface ticketType  {
+export interface TicketType  {
     id: number,
     name: String,
     price: number,

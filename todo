@@ -39,8 +39,8 @@ Pages :
     - Home Page :
         - Tab Icon (Completed)
         - Add Header (Completed)
-        - Search bar (In_progress)
-        - Body (featured , Latest , Most Poplar) => (Pending)
+        - Search bar (Completed)
+        - Body (featured , Latest , Most Poplar) => (Completed)
 
     - Search Page :
         - Search Bar => (Pending): 
@@ -74,6 +74,15 @@ Constant Models :
     - Ticket => (Pending)
     - City => (Pending)
     - Compeny => (Pending)
+
+Types : 
+    - Customer => (Completed)
+    - Event => (Completed)
+    - Ticket Type => (Completed)
+    - Ticket => (Completed)
+    - City => (Completed)
+    - Compeny => (Completed)
+
 
 Data : 
     - Create a file have dumb data to test => (Pending)
