@@ -11,7 +11,8 @@ export default function Link({ title, url , color }: LinkProps) {
       onPress={() => router.push((url || "/(auth)/Register") as any)}
     >
       <Text  style={{
-        color: color || colors.link 
+        color: color || colors.link,
+        fontSize: 16, 
       }}>{title}</Text>
     </TouchableOpacity>
   );

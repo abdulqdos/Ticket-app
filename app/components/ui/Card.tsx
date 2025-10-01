@@ -5,9 +5,8 @@ import { Image, Text, View } from "react-native";
 
 export default function Card() {
   return (
-    <View>
-      {/* Image with heart icon in top right for fav action  */}
-      <View className="relative w-40 h-52 rounded-lg overflow-hidden">
+    <View className="border  border-grayLight/50 rounded-lg p-2">
+      <View className="relative w-40 h-52 rounded-lg overflow-hidden ">
         <Image
           source={require("@/assets/images/profile.jpeg")}
           className="w-full h-full rounded-lg"

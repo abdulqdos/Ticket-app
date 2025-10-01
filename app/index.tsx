@@ -35,3 +35,17 @@ export default function Index() {
 
   return <Redirect href="/splash" />;
 }
+
+// import * as NavigationBar from 'expo-navigation-bar';
+// import { useEffect } from 'react';
+
+// export default function App() {
+//   useEffect(() => {
+//     NavigationBar.setVisibilityAsync("hidden"); // يخفي شريط المثلث/المربع
+//     NavigationBar.setBehaviorAsync("overlay-swipe"); // يخليه يرجع بالسحب فقط
+//   }, []);
+
+//   return (
+//     <YourNavigation />
+//   );
+// }
