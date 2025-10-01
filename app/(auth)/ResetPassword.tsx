@@ -1,9 +1,9 @@
+import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
-import { Customer } from "../../constants/customer";
-import {  AuthHeader } from "../components/Auth";
-import{ Button , ErrorMessage , Input }from "@/app/components/ui/Form";
+import { Customer } from "../../types/customer";
+import { AuthHeader } from "../components/Auth";
 
 export default function ResetPassword() {
   const [password, setPassword] = useState(Customer.passowrd);
