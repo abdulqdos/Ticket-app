@@ -1,5 +1,7 @@
+import { Event } from "./event";
+
 export interface Company {
     id: number,
     name: string,
-    ticketTypes: number[],
+    events: Event[],
 }

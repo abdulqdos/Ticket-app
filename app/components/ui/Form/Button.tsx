@@ -5,14 +5,16 @@ export default function Button({
   title,
   handleSubmit,
   disabled = false,
+  classes = "",
 }: {
   title: string;
   handleSubmit: () => void;
   disabled?: boolean;
+  classes?: string;
 }) {
   return (
     <TouchableOpacity
-      className="bg-primary disabled:bg-grayLight text-primary rounded-2xl py-3 mt-6"
+      className={"bg-primary disabled:bg-grayLight text-primary rounded-2xl py-3 mt-6" + " " + classes }
       onPress={handleSubmit}
       disabled={disabled}
     >

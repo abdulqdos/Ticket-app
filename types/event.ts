@@ -1,3 +1,5 @@
+import { TicketType } from "./ticketType";
+
 export interface Event {
   id: number;
   name: string;
@@ -6,5 +8,5 @@ export interface Event {
   endDate: string;
   cityId: number;
   companyId: number;
-  ticketTypes: number[],
+  ticketTypes: TicketType[],
 }
