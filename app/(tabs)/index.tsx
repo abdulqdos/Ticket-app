@@ -10,7 +10,6 @@ export default function Index() {
         <Header />
         <Search />
       </View>
-
       <View className="flex-1">
         <Body />
       </View>
