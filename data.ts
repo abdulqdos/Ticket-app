@@ -26,17 +26,28 @@ export const tickets: Ticket[] = [
 
 // ------------------ Customers ------------------
 export const customers: Customer[] = [
-  { id: 1, firstName: "Ahmed", lastName: "Ali", email: "ahmed@example.com", phone: "0916000001", passowrd: "password", tickets: [tickets[0], tickets[1]] },
-  { id: 2, firstName: "Sara", lastName: "Omar", email: "sara@example.com", phone: "0916000002", passowrd: "password", tickets: [tickets[2], tickets[3]] },
-  { id: 3, firstName: "Khaled", lastName: "Youssef", email: "khaled@example.com", phone: "0916000003", passowrd: "password", tickets: [tickets[4], tickets[5]] },
-  { id: 4, firstName: "Mona", lastName: "Saleh", email: "mona@example.com", phone: "0916000004", passowrd: "password", tickets: [tickets[6], tickets[19]] },
-  { id: 5, firstName: "Hussein", lastName: "Faraj", email: "hussein@example.com", phone: "0916000005", passowrd: "password", tickets: [tickets[7], tickets[14]] },
-  { id: 6, firstName: "Laila", lastName: "Abdullah", email: "laila@example.com", phone: "0916000006", passowrd: "password", tickets: [tickets[8], tickets[15]] },
-  { id: 7, firstName: "Omar", lastName: "Fathi", email: "omar@example.com", phone: "0916000007", passowrd: "password", tickets: [tickets[9], tickets[16]] },
-  { id: 8, firstName: "Huda", lastName: "Jamal", email: "huda@example.com", phone: "0916000008", passowrd: "password", tickets: [tickets[10], tickets[17]] },
-  { id: 9, firstName: "Salem", lastName: "Karim", email: "salem@example.com", phone: "0916000009", passowrd: "password", tickets: [tickets[11], tickets[18]] },
-  { id: 10, firstName: "Nora", lastName: "Adel", email: "nora@example.com", phone: "0916000010", passowrd: "password", tickets: [tickets[12], tickets[13]] },
+  { id: 1, firstName: "Ahmed", lastName: "Ali", email: "ahmed@example.com", phone: "0916000001", password: "password", tickets: [tickets[0], tickets[1]] },
+  { id: 2, firstName: "Sara", lastName: "Omar", email: "sara@example.com", phone: "0916000002", password: "password", tickets: [tickets[2], tickets[3]] },
+  { id: 3, firstName: "Khaled", lastName: "Youssef", email: "khaled@example.com", phone: "0916000003", password: "password", tickets: [tickets[4], tickets[5]] },
+  { id: 4, firstName: "Mona", lastName: "Saleh", email: "mona@example.com", phone: "0916000004", password: "password", tickets: [tickets[6], tickets[19]] },
+  { id: 5, firstName: "Hussein", lastName: "Faraj", email: "hussein@example.com", phone: "0916000005", password: "password", tickets: [tickets[7], tickets[14]] },
+  { id: 6, firstName: "Laila", lastName: "Abdullah", email: "laila@example.com", phone: "0916000006", password: "password", tickets: [tickets[8], tickets[15]] },
+  { id: 7, firstName: "Omar", lastName: "Fathi", email: "omar@example.com", phone: "0916000007", password: "password", tickets: [tickets[9], tickets[16]] },
+  { id: 8, firstName: "Huda", lastName: "Jamal", email: "huda@example.com", phone: "0916000008", password: "password", tickets: [tickets[10], tickets[17]] },
+  { id: 9, firstName: "Salem", lastName: "Karim", email: "salem@example.com", phone: "0916000009", password: "password", tickets: [tickets[11], tickets[18]] },
 ];
+
+
+export const customer: Customer = {
+  id: 10,
+  firstName: "Nora",
+  lastName: "Adel",
+  email: "nora@example.com",
+  phone: "0916000010",
+  password: "password",
+  tickets: [tickets[12], tickets[13]],
+};
+
 
 // ------------------ Ticket Types ------------------
 export const ticketTypes: TicketType[] = [

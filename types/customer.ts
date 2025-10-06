@@ -6,6 +6,6 @@ export interface Customer {
     lastName: String,
     email: String,
     phone: String,
-    passowrd: String,
+    password: String,
     tickets: Ticket[],
 }

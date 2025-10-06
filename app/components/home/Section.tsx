@@ -1,4 +1,4 @@
-import { Card } from "@/app/components/ui";
+import { Card } from "@/app/components/Events";
 import { colors } from "@/constants/colors";
 import React from "react";
 import { ScrollView, View } from "react-native";
@@ -28,7 +28,7 @@ export default function Section({
       >
         <View className="flex flex-row flex-wrap justify-between gap-4">
           {data.map((item) => (
-            <Card key={item.id} data={item} />
+            <Card key={item.id} event={item} />
           ))}
         </View>
       </ScrollView>
