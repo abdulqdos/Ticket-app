@@ -20,7 +20,7 @@ export default function BackArrow({
   return (
     <TouchableOpacity
       className={
-        `absolute top-10 left-4 w-12 h-12 rounded-full border border-gray-300 justify-center items-center bg-white z-20 ${classes}`
+        `absolute top-10 left-4 w-10 h-10 rounded-full border border-gray-300 justify-center items-center bg-white z-20 ${classes}`
       }
       // @ts-ignore
       onPress={() => router.replace(url ? url : "/")}

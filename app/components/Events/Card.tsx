@@ -4,6 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { Image, Pressable, Text, View } from "react-native";
 import Price from "./Price";
+import { Heart } from "../ui/Icons";
 
 type CardProps = {
   event: any;
@@ -24,9 +25,7 @@ export default function Card({ key, event }: CardProps) {
           className="w-full h-full"
         />
 
-        <View className="absolute top-2 right-2 bg-white/70 rounded-full p-[2px]">
-          <Ionicons name="heart-outline" size={20} color={colors.black} />
-        </View>
+        <Heart containerClassName="top-2 right-1" buttonClassName="p-1"/>
       </View>
 
       <Text

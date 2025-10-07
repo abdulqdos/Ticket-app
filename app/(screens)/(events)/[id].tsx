@@ -1,20 +1,18 @@
-import BackArrow from "@/app/components/ui/Icons/BackArrow";
+import {BackArrow , Heart} from "@/app/components/ui/Icons";
+import { colors } from "@/constants/colors";
 import { events } from "@/data";
 import { useLocalSearchParams } from "expo-router";
+import { useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
-import {
-  ArrowRightIcon,
-  HeartIcon,
-  ShoppingBagIcon,
-} from "react-native-heroicons/outline";
+
 
 export default function EventPage() {
   const { id } = useLocalSearchParams();
   const event = events.find((e) => e.id === Number(id));
+  const [selectedTicket, setSelectedTicket] = useState(null);
 
   return (
     <ScrollView className="flex-1 bg-white">
-      {/* Event Image */}
       <View className="relative w-full h-96">
         <Image
           source={{ uri: "https://picsum.photos/600/400" }}
@@ -22,52 +20,74 @@ export default function EventPage() {
           resizeMode="cover"
         />
 
-        
-          <BackArrow url="/(tabs)" />
+      <BackArrow url="/(tabs)" color={colors.black} classes="border-transparent" />
         
 
-        {/* Top Action Buttons */}
-        <View className="absolute top-10 right-4 flex-row space-x-3 z-10">
-          <TouchableOpacity className="bg-white p-3 rounded-full shadow">
-            <HeartIcon size={20} color="black" />
-          </TouchableOpacity>
-        </View>
+      {/* Heart Icon  */}
+        <Heart />
 
-        {/* Image Dots */}
+      {/** Scroll Image Bg  */}
         <View className="absolute bottom-4 left-0 right-0 flex-row justify-center space-x-2">
           <View className="w-2 h-2 rounded-full bg-white" />
-          <View className="w-2 h-2 rounded-full bg-gray-400" />
-          <View className="w-2 h-2 rounded-full bg-gray-400" />
         </View>
       </View>
 
-      {/* Event Info Card */}
       <View className="mt-6 p-4 bg-white rounded-t-3xl shadow-lg space-y-4">
-        <Text className="text-2xl font-bold">{event?.name || "اسم الحدث"}</Text>
-
-        {/* Rating and reviews */}
-        <Text className="text-gray-500 text-sm">⭐ 4.0 | 20 نظر</Text>
-
-        {/* Price / Tickets */}
-        <Text className="text-xl font-bold text-black">{"مجاني"}</Text>
-
-        {/* Description */}
-        <Text className="text-gray-700">
-          {event?.description || "وصف الحدث..."}
+        <Text className="text-2xl font-bold text-black">
+          {event?.name || "اسم الحدث"}
         </Text>
 
-        {/* Additional Options */}
-        <View className="space-y-2">
-          <Text className="font-semibold">سایز / نوع التذاكر</Text>
-          <TouchableOpacity className="bg-gray-100 p-3 rounded-xl">
-            <Text>انتخاب سایز / نوع</Text>
-          </TouchableOpacity>
-        </View>
+        <Text className="text-textGray leading-6">
+          {event?.description || "لا يوجد وصف متاح."}
+        </Text>
 
-        {/* Register / Buy Button */}
-        <TouchableOpacity className="bg-black p-4 rounded-xl mt-4">
-          <Text className="text-white text-center font-bold text-lg">
-            اضافه کردن به سبد خرید
+        {event?.ticketTypes?.length > 0 && (
+          <View>
+            <Text className="font-semibold text-lg my-4">أنواع التذاكر</Text>
+
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ flexDirection: "row", gap: 16 }}
+            >
+              {event.ticketTypes.map((ticket) => (
+                <TouchableOpacity
+                  key={ticket.id}
+                  onPress={() => setSelectedTicket(ticket)}
+                  className={`p-4 rounded-2xl border w-44 ${
+                    selectedTicket?.id === ticket.id
+                      ? "border-black bg-gray-100"
+                      : "border-gray-200 bg-white"
+                  }`}
+                >
+                  <Text className="font-bold text-base text-black">
+                    {ticket.name}
+                  </Text>
+                  <Text className="text-gray-600 mt-1">
+                    السعر: {ticket.price} دينار
+                  </Text>
+                  <Text className="text-gray-500 mt-1">
+                    المتاح: {ticket.quantity}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        )}
+
+        <TouchableOpacity
+          disabled={!selectedTicket}
+          className={`p-4 rounded-xl mt-4 ${
+            selectedTicket ? "bg-black" : "bg-gray-400"
+          }`}
+        >
+          <Text
+            className="text-white text-center font-bold text-lg"
+            disabled={!selectedTicket}
+          >
+            {selectedTicket
+              ? `احجز ${selectedTicket?.name}`
+              : "اختر نوع التذكرة"}
           </Text>
         </TouchableOpacity>
       </View>
