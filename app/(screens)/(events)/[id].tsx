@@ -41,7 +41,7 @@ export default function EventPage() {
           {event?.description || "لا يوجد وصف متاح."}
         </Text>
 
-        {event?.ticketTypes?.length > 0 && (
+        {event?.ticketTypes && event.ticketTypes.length > 0 && (
           <View>
             <Text className="font-semibold text-lg my-4">أنواع التذاكر</Text>
 
@@ -63,10 +63,10 @@ export default function EventPage() {
                   <Text className="font-bold text-base text-black">
                     {ticket.name}
                   </Text>
-                  <Text className="text-gray-600 mt-1">
+                  <Text className="text-textGray mt-1">
                     السعر: {ticket.price} دينار
                   </Text>
-                  <Text className="text-gray-500 mt-1">
+                  <Text className="text-textGray mt-1">
                     المتاح: {ticket.quantity}
                   </Text>
                 </TouchableOpacity>
