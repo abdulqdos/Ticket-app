@@ -1,6 +1,6 @@
 import { AuthFooter, AuthHeader } from "@/app/components/Auth";
 import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
-import Link from "@/app/components/ui/Link";
+import Link from "@/app/components/ui/Elements/Link";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import { Text, View } from "react-native";

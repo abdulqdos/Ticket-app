@@ -20,7 +20,7 @@ export default function StatsCard({
   bgIcon = "#FFF9C4", // default light yellow
 }: StatsCardProps) {
   return (
-    <View className="items-center bg-white rounded-xl shadow-md px-4 py-6 mx-2 flex-1">
+    <View className="items-center bg-white rounded-xl border  border-textGray/20 px-4 py-6 mx-2 flex-1">
       <View className={`p-3 rounded-full mb-2`} style={{ backgroundColor: bgIcon }}>
        {/* @ts-ignore */}
         <Ionicons size={24} color={iconColor} name={iconName} />
