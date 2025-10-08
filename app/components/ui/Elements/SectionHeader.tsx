@@ -1,6 +1,6 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import { Link } from '@/app/components/ui'
+import { Link } from '@/app/components/ui/Elements'
 import { colors } from '@/constants/colors'
 
 type SectionHeaderProps = {
