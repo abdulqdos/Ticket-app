@@ -1,8 +1,8 @@
+import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { AuthFooter, AuthHeader } from "../components/Auth";
-import{ Button , ErrorMessage , Input }from "@/app/components/ui/Form";
 
 export default function Register() {
   // Form Inputs
@@ -87,10 +87,11 @@ export default function Register() {
       <AuthHeader
         title="إنشاء حساب جديد"
         description="خطوات بسيطة لحجز تذكرتك"
+        containerClassName="py-6"
       />
 
-      <View className="flex gap-4">
-        <View>
+      <ScrollView className="flex flex-col gap-6 pb-20 max-h-64">
+        <View className="mb-2">
           <Input
             data={firstName}
             setData={setFirstName}
@@ -101,7 +102,7 @@ export default function Register() {
           {firstNameError !== "" && <ErrorMessage message={firstNameError} />}
         </View>
 
-        <View>
+        <View className="mb-2">
           <Input
             data={lastName}
             setData={setLastName}
@@ -112,7 +113,7 @@ export default function Register() {
           {lastNameError !== "" && <ErrorMessage message={lastNameError} />}
         </View>
 
-        <View>
+        <View className="mb-2">
           <Input
             data={phone}
             setData={setPhone}
@@ -123,7 +124,7 @@ export default function Register() {
           {phoneError !== "" && <ErrorMessage message={phoneError} />}
         </View>
 
-        <View>
+        <View className="mb-2">
           <Input
             data={email}
             setData={setEmail}
@@ -134,7 +135,7 @@ export default function Register() {
           {emailError !== "" && <ErrorMessage message={emailError} />}
         </View>
 
-        <View>
+        <View className="mb-2">
           <Input
             data={password}
             setData={setPassword}
@@ -146,7 +147,7 @@ export default function Register() {
           {passwordError !== "" && <ErrorMessage message={passwordError} />}
         </View>
 
-        <View>
+        <View className="mb-2">
           <Input
             data={confirmPassword}
             setData={setConfirmPassword}
@@ -159,7 +160,7 @@ export default function Register() {
             <ErrorMessage message={confirmPasswordError} />
           )}
         </View>
-      </View>
+      </ScrollView>
 
       <Button title={"إنشاء حساب"} handleSubmit={handleRegister} />
       <AuthFooter

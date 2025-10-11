@@ -50,7 +50,7 @@ export default function Login() {
 
   return (
     <View className="relative flex-1 justify-center bg-white px-6">
-      <AuthHeader title="مرحبًا بك مجددًا" description="سجل الدخول إلى حسابك" />
+      <AuthHeader title="مرحبًا بك مجددًا" description="سجل الدخول إلى حسابك" containerClassName="py-6" />
 
       <View className="flex gap-4">
         <View>
