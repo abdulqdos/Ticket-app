@@ -1,6 +1,6 @@
+import { colors } from "@/constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { TextInput, View } from "react-native";
-import { colors } from "@/constants/colors";
 export default function Input({
   data,
   setData,
@@ -8,6 +8,7 @@ export default function Input({
   placeholder,
   icon = "mail-outline",
   secureTextEntry = false,
+  classes = "",
 }: {
   data: string;
   setData: (val: string) => void;
@@ -15,10 +16,11 @@ export default function Input({
   placeholder: string;
   icon?: React.ComponentProps<typeof Ionicons>["name"];
   secureTextEntry?: boolean;
+  classes?: string;
 }) {
   return (
     <View
-      className={`flex-row items-center border border-grayLight rounded-xl px-3 py-1 ${isError ? " border-red-500" : " border-gray-300"}`}
+      className={`flex-row items-center border border-grayLight rounded-xl px-3 py-1 ${isError ? " border-red-500" : " border-gray-300"} ${classes}`}
     >
       <TextInput
         className="flex-1 text-base"
@@ -30,9 +32,7 @@ export default function Input({
         textAlign="right"
       />
 
-
       <Ionicons name={icon} size={20} color={colors.textGray} />
     </View>
   );
 }
-
