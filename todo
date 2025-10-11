@@ -43,22 +43,16 @@ Pages :
         - Body (featured , Latest , Most Poplar) => (Completed)
 
     - Search Page :
-        - Search Bar => (Pending): 
+        - Search Bar => (Completed): 
 
     - Tickets Page :
         - Display All Customer Tickets => (Pending)
         - Empty State  => (Pending)
 
     - Profile : 
-        - Main Data => (Pending)
-        - Setting => (Pending)
-        - A lot todo
-
-    - Body (0 / 3)
-            1 - All Events => (Pending)
-            2 -  Events u search => (Pending)
-            3 - Empty State => (Pending)
-
+        - Main Data => (Completed)
+        - Account Data => (Completed)
+        - Logout BTN => (Completed)
         
 Context : 
     - useAuth => (Pending)
@@ -82,14 +76,11 @@ Types :
     - City => (Completed)
     - Compeny => (Completed)
 
-
 Data : 
-    - Create a file have dumb data to test => (Pending)
+    - Create a file have dumb data to test => (Completed)
 
 Ui UX :
     - We Need Logo (Pending)
 
 Proplems :
     - Verfiy Code Page the dir is  rtl but the dir must be ltr => (pending) 
-
-
