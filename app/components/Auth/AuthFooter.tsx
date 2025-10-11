@@ -3,21 +3,20 @@ import { Text, TouchableOpacity, View } from "react-native";
 
 export default function AuthFooter({
   title,
-  url,
+  url = "/(auth)",
   urlTitle,
 }: {
   title?: string;
-  url?: string;
+  url?: any;
   urlTitle?: string;
 }) {
+ 
   const router = useRouter();
 
   return (
     <View className="flex-row justify-center mt-4 gap-4">
       <Text className="text-textGray">{title}</Text>
-      <TouchableOpacity
-        onPress={() => router.replace((url ? url : "/(auth)") as any)}
-      >
+      <TouchableOpacity onPress={() => router.replace(url)}>
         <Text className="text-primary font-semibold">{urlTitle}</Text>
       </TouchableOpacity>
     </View>
