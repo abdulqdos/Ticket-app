@@ -10,7 +10,9 @@ import {
 } from "@expo-google-fonts/tajawal";
 import { Redirect } from "expo-router";
 import { ActivityIndicator, Text, View } from "react-native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+const queryClient = new QueryClient();
 export default function Index() {
   const [fontsLoaded] = useFonts({
     Tajawal_200ExtraLight,
@@ -33,9 +35,13 @@ export default function Index() {
     );
   }
 
-  return <Redirect href="/splash" />;
-}
 
+  return (
+    <QueryClientProvider client={queryClient}>
+      <Redirect href="/splash" />
+    </QueryClientProvider>
+  );
+}
 // import * as NavigationBar from 'expo-navigation-bar';
 // import { useEffect } from 'react';
 

@@ -1,11 +1,11 @@
+import { useLogin } from "@/app/api/Auth/use-login";
 import { AuthFooter, AuthHeader } from "@/app/components/Auth";
-import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
 import Link from "@/app/components/ui/Elements/Link";
+import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
+import { Customer } from "@/constants/customer";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Text, View } from "react-native";
-import { Customer } from "@/constants/customer";
-
+import { Alert, Text, View } from "react-native";
 export default function Login() {
   const [phone, setPhone] = useState(Customer.phone);
   const [password, setPassword] = useState(Customer.passowrd);
@@ -13,6 +13,16 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState("");
   const router = useRouter();
 
+const { mutate, isPending, error } = useLogin({
+    onSuccess: (data) => {
+      Alert.alert("نجاح", `أهلاً بك: ${data.message}`);
+      // هنا يمكنك التنقل لصفحة أخرى مثلاً: navigation.navigate('Home')
+    },
+    onError: (err) => {
+      Alert.alert("خطأ في الدخول", err.message );
+      
+    }
+  });
   const handleLogin = () => {
     // APi Calling but Fn lets make it hard coded one
 
@@ -20,32 +30,10 @@ export default function Login() {
     setPhoneError("");
     setPasswordError("");
 
-    // // Validation
-    // if (!phone || !password) {
-    //   setPhoneError(!phone ? "رقم الهاتف مطلوب" : "");
-    //   setPasswordError(!password ? "كلمة المرور مطلوبة" : "");
-    //   return;
-    // } else if (password.length < 6) {
-    //   setPasswordError("كلمة المرور يجب ان تكون اكثر من 6 احرف");
-    //   return;
-    // } else if (typeof phone !== "string" || !/^\d{10,15}$/.test(phone)) {
-    //   setPhoneError("رقم الهاتف غير صالح");
-    //   return;
-    // } else {
-    //   setPhoneError("");
-    //   setPasswordError("");
-    // }
-
     // // Api Calling
-    // console.log("Phone:", phone, "Password:", password);
-    // if (phone !== "0916050468" || password !== "123456") {
-    //   setPhoneError("رقم الهاتف او كلمة المرور غير صحيحة");
-    //   setPasswordError("رقم الهاتف او كلمة المرور غير صحيحة");
-    //   return;
-    // }
-
+    mutate({ phone, password });
     // Redirect
-    router.replace("/(tabs)");
+    // router.replace("/(tabs)");
   };
 
   return (
