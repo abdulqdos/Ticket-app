@@ -5,7 +5,7 @@ import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
 import { Customer } from "@/constants/customer";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
-import { Alert, Text, View } from "react-native";
+import { Text, View } from "react-native";
 export default function Login() {
   const [phone, setPhone] = useState(Customer.phone);
   const [password, setPassword] = useState(Customer.passowrd);
@@ -13,27 +13,28 @@ export default function Login() {
   const [passwordError, setPasswordError] = useState("");
   const router = useRouter();
 
-const { mutate, isPending, error } = useLogin({
+  const { mutate, isPending, error } = useLogin({
     onSuccess: (data) => {
-      Alert.alert("نجاح", `أهلاً بك: ${data.message}`);
-      // هنا يمكنك التنقل لصفحة أخرى مثلاً: navigation.navigate('Home')
+      // i will ad d toast later
+
+      // redirect
+      router.replace("/(tabs)");
     },
-    onError: (err) => {
-      Alert.alert("خطأ في الدخول", err.message );
-      
+    onError: (error) => {
+      // Alert.alert("خطأ في تسجيل الدخول", ;
     }
   });
-  const handleLogin = () => {
-    // APi Calling but Fn lets make it hard coded one
 
+  const serverErrors = (error as any)?.serverErrors;
+
+  const handleLogin = () => {
     // Clear all previous errors
     setPhoneError("");
     setPasswordError("");
 
-    // // Api Calling
+    // Api Calling
     mutate({ phone, password });
-    // Redirect
-    // router.replace("/(tabs)");
+
   };
 
   return (
@@ -49,7 +50,10 @@ const { mutate, isPending, error } = useLogin({
             placeholder={"رقم الهاتف"}
             icon="phone-portrait-outline"
           />
-          {phoneError !== "" && <ErrorMessage message={phoneError} />}
+
+          {serverErrors?.phone && (
+            <ErrorMessage message={serverErrors.phone[0]} />
+          )}
         </View>
 
         <View>
@@ -61,16 +65,20 @@ const { mutate, isPending, error } = useLogin({
             icon="key-outline"
             secureTextEntry={true}
           />
-          {passwordError !== "" && <ErrorMessage message={passwordError} />}
+          {serverErrors?.password && (
+            <ErrorMessage message={serverErrors.password[0]} />
+          )}
         </View>
 
         <View className="flex-row justify-center py-2">
           <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
-          
-          <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword"/>
+          <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword" />
         </View>
       </View>
 
+      {error && !serverErrors && (
+        <ErrorMessage message={error.message} />
+      )}
       <Button title={"تسجيل الدخول"} handleSubmit={handleLogin} />
       <AuthFooter
         title="ليس لديك حساب ؟"

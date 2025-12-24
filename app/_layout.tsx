@@ -12,23 +12,23 @@ I18nManager.allowRTL(true);
 I18nManager.forceRTL(true);
 
 export default function RootLayout() {
-    useEffect(() => {
+  useEffect(() => {
     NavigationBar.setVisibilityAsync("hidden");
     NavigationBar.setBehaviorAsync("overlay-swipe");
-       NavigationBar.setBackgroundColorAsync("#FF0000");
+    NavigationBar.setBackgroundColorAsync("#FF0000");
 
 
     NavigationBar.setButtonStyleAsync("dark");
   }, []);
   return (
     <QueryClientProvider client={queryClient}>
-      
-        <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="splash" options={{ headerShown: false }} />
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-    </Stack>
+
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="splash" options={{ headerShown: false }} />
+        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+      </Stack>
     </QueryClientProvider>
-  
+
   );
 }

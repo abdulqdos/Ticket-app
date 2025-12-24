@@ -10,7 +10,7 @@ export const apiFetch = async (
 ) => {
   const finalOptions: RequestInit = {
     ...options,
-    headers: { 
+    headers: {
       "Content-Type": "application/json",
       "Accept": "application/json",
       ...(options?.headers || {})
@@ -23,13 +23,16 @@ export const apiFetch = async (
 
   const res = await fetch(`${BASE_URL}/${endpoint}`, finalOptions);
 
-  
-  const data = await res.json().catch(() => null); 
+
+  const data = await res.json().catch(() => null);
 
   if (!res.ok) {
-    throw new Error(data?.message || `API Error: ${res.status}`);
+    const error: any = new Error(data.message || "حدث خطأ ما");
+    error.serverErrors = data.errors;
+    error.status = res.status;
+    throw error;
   }
 
 
-  return data; 
+  return data;
 };
