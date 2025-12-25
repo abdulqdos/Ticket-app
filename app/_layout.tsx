@@ -16,8 +16,6 @@ export default function RootLayout() {
     NavigationBar.setVisibilityAsync("hidden");
     NavigationBar.setBehaviorAsync("overlay-swipe");
     NavigationBar.setBackgroundColorAsync("#FF0000");
-
-
     NavigationBar.setButtonStyleAsync("dark");
   }, []);
   return (

@@ -9,29 +9,20 @@ import { Text, View } from "react-native";
 export default function Login() {
   const [phone, setPhone] = useState(Customer.phone);
   const [password, setPassword] = useState(Customer.passowrd);
-  const [phoneError, setPhoneError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const router = useRouter();
 
   const { mutate, isPending, error } = useLogin({
     onSuccess: (data) => {
-      // i will ad d toast later
+      // i will add d toast later
 
       // redirect
       router.replace("/(tabs)");
     },
-    onError: (error) => {
-      // Alert.alert("خطأ في تسجيل الدخول", ;
-    }
   });
 
   const serverErrors = (error as any)?.serverErrors;
 
   const handleLogin = () => {
-    // Clear all previous errors
-    setPhoneError("");
-    setPasswordError("");
-
     // Api Calling
     mutate({ phone, password });
 
@@ -46,7 +37,7 @@ export default function Login() {
           <Input
             data={phone}
             setData={setPhone}
-            isError={phoneError !== ""}
+            isError={serverErrors?.phone}
             placeholder={"رقم الهاتف"}
             icon="phone-portrait-outline"
           />
@@ -55,36 +46,38 @@ export default function Login() {
             <ErrorMessage message={serverErrors.phone[0]} />
           )}
         </View>
-
-        <View>
-          <Input
-            data={password}
-            setData={setPassword}
-            isError={passwordError !== ""}
-            placeholder={"كلمة المرور"}
-            icon="key-outline"
-            secureTextEntry={true}
-          />
-          {serverErrors?.password && (
-            <ErrorMessage message={serverErrors.password[0]} />
-          )}
-        </View>
-
-        <View className="flex-row justify-center py-2">
-          <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
-          <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword" />
-        </View>
+       
+      <View>
+        <Input
+          data={password}
+          setData={setPassword}
+          isError={serverErrors?.password}
+          placeholder={"كلمة المرور"}
+          icon="key-outline"
+          secureTextEntry={true}
+        />
+        {serverErrors?.password && (
+          <ErrorMessage message={serverErrors.password[0]} />
+        )}
       </View>
 
-      {error && !serverErrors && (
-        <ErrorMessage message={error.message} />
-      )}
+      <View className="flex-row justify-center py-2">
+        <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
+        <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword" />
+      </View>
+    </View>
+
+      {
+    error && !serverErrors && (
+      <ErrorMessage message={error.message} />
+    )
+  }
       <Button title={"تسجيل الدخول"} handleSubmit={handleLogin} />
       <AuthFooter
         title="ليس لديك حساب ؟"
         urlTitle="إنشاء حساب"
         url="/(auth)/Register"
       />
-    </View>
+    </View >
   );
 }

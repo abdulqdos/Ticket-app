@@ -1,3 +1,4 @@
+import { useRegister } from "@/app/api/Auth/use-register";
 import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
 import { useRouter } from "expo-router";
 import { useState } from "react";
@@ -13,73 +14,22 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // Error Messages
-  const [phoneError, setPhoneError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [firstNameError, setFirstNameError] = useState("");
-  const [lastNameError, setLastNameError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [confirmPasswordError, setConfirmPasswordError] = useState("");
-
   const router = useRouter();
 
+  const { mutate, isPending, error } = useRegister({
+    onSuccess: (data) => {
+      // i will ad d toast later
+
+      // redirect
+      router.replace("/(tabs)");
+    },
+  });
+
+  const serverErrors = (error as any)?.serverErrors;
+
   const handleRegister = () => {
-    //  API Calling but for now lets make it hard coded one
-
-    // Clear all previous errors
-    setPhoneError("");
-    setEmailError("");
-    setFirstNameError("");
-    setLastNameError("");
-    setPasswordError("");
-    setConfirmPasswordError("");
-
-    let isValid = true;
-
-    // First Name
-    if (!firstName.trim()) {
-      setFirstNameError("الاسم الأول مطلوب");
-      isValid = false;
-    }
-
-    // Last Name
-    if (!lastName.trim()) {
-      setLastNameError("الاسم الأخير مطلوب");
-      isValid = false;
-    }
-
-    // Phone
-    const phoneStr = String(phone);
-    if (!/^\d{10,15}$/.test(phoneStr)) {
-      setPhoneError("رقم الهاتف غير صالح (يجب أن يكون بين 10 و 15 رقم)");
-      isValid = false;
-    }
-
-    // Email
-    if (!email.trim()) {
-      setEmailError("البريد الإلكتروني مطلوب");
-      isValid = false;
-    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
-      setEmailError("البريد الإلكتروني غير صحيح");
-      isValid = false;
-    }
-
-    // Password
-    if (password.length < 6) {
-      setPasswordError("كلمة المرور يجب أن تكون 6 أحرف على الأقل");
-      isValid = false;
-    }
-
-    // Confirm Password
-    if (confirmPassword !== password) {
-      setConfirmPasswordError("كلمتا المرور غير متطابقتين");
-      isValid = false;
-    }
-
-    if (!isValid) return;
-
-    // Redirect
-    router.replace("/(tabs)");
+    // Api Calling
+    mutate({ phone, password, first_name: firstName, last_name: lastName, email, password_confirmation: confirmPassword });
   };
 
   return (
@@ -95,70 +45,77 @@ export default function Register() {
           <Input
             data={firstName}
             setData={setFirstName}
-            isError={firstNameError !== ""}
+            isError={serverErrors?.first_name}
             placeholder="الاسم الاول"
             icon="person-outline"
           />
-          {firstNameError !== "" && <ErrorMessage message={firstNameError} />}
+          {serverErrors?.first_name && (
+            <ErrorMessage message={serverErrors?.first_name[0]} />
+          )}
         </View>
 
         <View className="mb-2">
           <Input
             data={lastName}
             setData={setLastName}
-            isError={lastNameError !== ""}
+            isError={serverErrors?.last_name}
             placeholder="الاسم الاخير"
             icon="person-outline"
           />
-          {lastNameError !== "" && <ErrorMessage message={lastNameError} />}
+          {serverErrors?.last_name && (
+            <ErrorMessage message={serverErrors?.last_name[0]} />
+          )}
         </View>
 
         <View className="mb-2">
           <Input
             data={phone}
             setData={setPhone}
-            isError={phoneError !== ""}
+            isError={serverErrors?.phone}
             placeholder="رقم الهاتف"
             icon="phone-portrait-outline"
           />
-          {phoneError !== "" && <ErrorMessage message={phoneError} />}
+          {serverErrors?.phone && (
+            <ErrorMessage message={serverErrors?.phone[0]} />
+          )}
         </View>
 
         <View className="mb-2">
           <Input
             data={email}
             setData={setEmail}
-            isError={emailError !== ""}
-            placeholder="البريد الالكتروني"
+            isError={serverErrors?.email}
+            placeholder="البريد الالكتروني (اختياري)"
             icon="mail-outline"
           />
-          {emailError !== "" && <ErrorMessage message={emailError} />}
+          {serverErrors?.email && (
+            <ErrorMessage message={serverErrors?.email[0]} />
+          )}
         </View>
 
         <View className="mb-2">
           <Input
             data={password}
             setData={setPassword}
-            isError={passwordError !== ""}
+            isError={serverErrors?.password}
             placeholder="كلمة المرور"
             icon="lock-closed-outline"
             secureTextEntry={true}
           />
-          {passwordError !== "" && <ErrorMessage message={passwordError} />}
+          {serverErrors?.password && (
+            <ErrorMessage message={serverErrors?.password[0]} />
+          )}
         </View>
 
         <View className="mb-2">
           <Input
             data={confirmPassword}
             setData={setConfirmPassword}
-            isError={confirmPasswordError !== ""}
+            isError={serverErrors?.password}
             placeholder="تأكيد كلمة المرور"
             icon="lock-open-outline"
             secureTextEntry={true}
           />
-          {confirmPasswordError !== "" && (
-            <ErrorMessage message={confirmPasswordError} />
-          )}
         </View>
       </ScrollView>
 
