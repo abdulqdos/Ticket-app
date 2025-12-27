@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'; // import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useMutation, useQueryClient, type UseMutationOptions } from "@tanstack/react-query";
 import { apiFetch } from "../lib";
 
@@ -35,14 +36,16 @@ export function useLogin(
       }
 
 
-      console.log("Data from Server:", data);
+      console.log("Data from Server:", data.data.token);
       return data;
     },
 
 
-    onSuccess: (data, variables, context) => {
+    onSuccess: async (data) => {
+      console.log("Login successful");
+      await AsyncStorage.setItem("userToken", data.data.token);
       queryClient.setQueryData(["currentUser"], data.data);
-      options?.onSuccess?.(data, variables, context);
+      options?.onSuccess?.(data, {}, undefined);
     },
 
     onError: (error, variables, onMutateResult, context) => {

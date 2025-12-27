@@ -1,12 +1,26 @@
 import { Header } from "@/app/components/home";
 import { InfoRow, StatusCard } from "@/app/components/ui/Elements";
 import { colors } from "@/constants/colors";
-import { ScrollView, Text, TouchableOpacity, View } from "react-native";
+import { Alert, ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Button } from "../components/ui/Form";
-
+import { useLogout } from "@/app/api/Auth/useLogout";
 import { useRouter } from "expo-router";
 
 export default function ProfilePage() {
+  const router = useRouter();
+  
+  // 1. Initialize the logout mutation
+  const { mutate: logout, isPending } = useLogout({
+    onSuccess: () => {
+      // Navigate to login only after successful server response
+      router.replace("/(auth)/Login");
+    },
+    onError: (error) => {
+      Alert.alert("خطأ", "فشل تسجيل الخروج، يرجى المحاولة مرة أخرى.");
+      console.error(error);
+    }
+  });
+
   const user = {
     name: "عبدالقدوس",
     email: "abdu@example.com",
@@ -17,17 +31,17 @@ export default function ProfilePage() {
     points: 120,
   };
 
-  const router = useRouter();
-  const handleLogout = () => {  router.replace("/(auth)/Login")};
+  
+  const handleLogout = () => {
+    logout(); 
+  };
  
   return (
     <ScrollView className="flex-1 bg-gray-50">
-      {/* Header */}
-      <View className="flex flex-col w-full gap-4 pt-10  px-4 shadow-md">
+      <View className="flex flex-col w-full gap-4 pt-10 px-4 shadow-md">
         <Header />
       </View>
 
-      {/* Quick Stats */}
       <View className="flex-row justify-around mt-6 px-4">
         <StatusCard
           iconName={"ticket-outline"}
@@ -49,7 +63,6 @@ export default function ProfilePage() {
         />
       </View>
 
-      {/* Account Section */}
       <View className="mt-6 px-4 gap-4">
         <Text className="text-lg font-semibold text-black">بيانات الحساب </Text>
         <InfoRow title="الاسم" value={user.name} />
@@ -57,9 +70,10 @@ export default function ProfilePage() {
         <InfoRow title="رقم الهاتف" value={user.phone} />
 
         <Button
-          title={"تسجيل الخروج"}
+          title={isPending ? "جاري تسجيل الخروج..." : "تسجيل الخروج"}
           handleSubmit={handleLogout}
-          classes="bg-red-500 mt-2"
+          classes={`${isPending ? "bg-gray-400" : "bg-red-500"} mt-2`}
+          disabled={isPending} 
         />
       </View>
     </ScrollView>

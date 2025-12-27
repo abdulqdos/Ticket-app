@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient, type UseMutationOptions } from "@tanstack/react-query";
 import { apiFetch } from "../lib";
 
-type LoginInput = { phone: string; password: string , first_name: string , last_name: string , email: string , password_confirmation: string};
-type LoginResponse = {
+type RegisterInput = { phone: string; password: string , first_name: string , last_name: string , email: string , password_confirmation: string};
+type RegisterResponse = {
   message: string;
   data: {
     token: string;
@@ -11,11 +11,11 @@ type LoginResponse = {
 
 
 export function useRegister(
-  options?: UseMutationOptions<LoginResponse, Error, LoginInput>
+  options?: UseMutationOptions<RegisterResponse, Error, RegisterInput>
 ) {
   const queryClient = useQueryClient();
 
-  return useMutation<LoginResponse, Error, LoginInput>({
+  return useMutation<RegisterResponse, Error, RegisterInput>({
     mutationFn: async ({ phone, password, first_name, last_name, email, password_confirmation }) => {
 
       const res = await apiFetch("api/customers/register", {
@@ -25,14 +25,14 @@ export function useRegister(
       }, true);
 
 
-      let data: LoginResponse;
+      let data: RegisterResponse;
 
       if (res instanceof Response) {
         console.log("Response is an instance of Response:", res);
         data = await res.json();
       } else {
         console.log("Response is not an instance of Response:", res);
-        data = res as LoginResponse;
+        data = res as RegisterResponse;
       }
 
 
