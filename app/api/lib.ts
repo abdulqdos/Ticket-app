@@ -1,8 +1,8 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Platform } from "react-native";
 
-const BASE_URL = Platform.OS === 'web' 
-  ? "http://localhost:9000" 
+const BASE_URL = Platform.OS === 'web'
+  ? "http://localhost:9000"
   : "http://10.0.2.2:9000";
 
 export const apiFetch = async (
@@ -16,7 +16,6 @@ export const apiFetch = async (
     "Accept": "application/json",
     ...options.headers,
   };
-
   if (requireAuth) {
     const token = await AsyncStorage.getItem("userToken");
     if (token) {
@@ -35,9 +34,9 @@ export const apiFetch = async (
 
   const res = await fetch(`${BASE_URL}/${endpoint}`, finalOptions);
 
-  if (res.status === 401) {
-    await AsyncStorage.removeItem("userToken");
-  }
+  // if (res.status === 401) {
+  //   // await AsyncStorage.removeItem("userToken");
+  // }
 
   const data = await res.json().catch(() => null);
 

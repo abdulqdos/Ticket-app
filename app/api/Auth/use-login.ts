@@ -16,8 +16,8 @@ export function useLogin(
   const queryClient = useQueryClient();
 
   return useMutation<LoginResponse, Error, LoginInput>({
+    ...options,
     mutationFn: async ({ phone, password }) => {
-
       const res = await apiFetch("api/customers/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,22 +36,29 @@ export function useLogin(
       }
 
 
-      console.log("Data from Server:", data.data.token);
+      console.log("Data from Server:", data.data);
       return data;
     },
 
 
+
     onSuccess: async (data) => {
       console.log("Login successful");
+      console.log("Data received:", data);
       await AsyncStorage.setItem("userToken", data.data.token);
-      queryClient.setQueryData(["currentUser"], data.data);
+      console.debug("[useLogin] Token saved to AsyncStorage:", data.data.token);
+
+      const savedToken = await AsyncStorage.getItem("userToken");
+      console.log("Token immediately read back:", savedToken);
+
+      queryClient.invalidateQueries({ queryKey: ["currentUser"] });
       options?.onSuccess?.(data, {}, undefined);
+
     },
 
     onError: (error, variables, onMutateResult, context) => {
       options?.onError?.(error, variables, onMutateResult, context);
     },
-    ...options,
   });
 }
 

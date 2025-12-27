@@ -1,12 +1,22 @@
+import { useUser } from "@/app/api/Auth/use-user";
 import { colors } from "@/constants/colors";
-import { customer } from "@/data";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { Image, Text, View } from "react-native";
+import { Image, Text, View, ActivityIndicator } from "react-native";
 
 export default function Header() {
+  const { data: user, isLoading } = useUser();
+
+  if (isLoading) {
+    return (
+      <View className="flex-row justify-center items-center p-4">
+        <ActivityIndicator color={colors.primary} />
+      </View>
+    );
+  }
+
   return (
-    <View className="flex-row justify-between items-center px-4 bg-white rounded-2xl border-t border-l border-r border-b  border-textGray/20">
+    <View className="flex-row justify-between items-center px-4 bg-white rounded-2xl border border-textGray/20">
       <View className="flex-row items-center gap-2 py-2">
         <Image
           source={require("@/assets/images/profile.jpeg")}
@@ -15,9 +25,11 @@ export default function Header() {
 
         <View>
           <Text className="text-lg font-semibold text-gray-900">
-            {customer.firstName} {customer.lastName}
+            {user?.data?.first_name + " " + user?.data?.last_name  || "مستخدم"}
           </Text>
-          <Text className="text-sm text-gray-500">{customer.phone}</Text>
+          <Text className="text-sm text-gray-500">
+            {user?.data?.phone || "لا يوجد رقم"}
+          </Text>
         </View>
       </View>
 

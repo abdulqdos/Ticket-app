@@ -12,6 +12,7 @@ export function useLogout(
     const queryClient = useQueryClient();
 
     return useMutation<LogoutResponse, Error, void>({
+        ...options,
         mutationFn: async () => {
             try {
                 return await apiFetch(
@@ -40,6 +41,5 @@ export function useLogout(
             await AsyncStorage.removeItem("userToken");
             options?.onError?.(error, variables, context);
         },
-        ...options,
     });
 }
