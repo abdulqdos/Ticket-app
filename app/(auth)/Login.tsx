@@ -1,4 +1,4 @@
-import { useLogin } from "@/app/api/Auth/use-login";
+import { useLogin } from "@/api/Auth/use-login";
 import { AuthFooter, AuthHeader } from "@/app/components/Auth";
 import Link from "@/app/components/ui/Elements/Link";
 import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
@@ -46,32 +46,32 @@ export default function Login() {
             <ErrorMessage message={serverErrors.phone[0]} />
           )}
         </View>
-       
-      <View>
-        <Input
-          data={password}
-          setData={setPassword}
-          isError={serverErrors?.password}
-          placeholder={"كلمة المرور"}
-          icon="key-outline"
-          secureTextEntry={true}
-        />
-        {serverErrors?.password && (
-          <ErrorMessage message={serverErrors.password[0]} />
-        )}
-      </View>
 
-      <View className="flex-row justify-center py-2">
-        <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
-        <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword" />
+        <View>
+          <Input
+            data={password}
+            setData={setPassword}
+            isError={serverErrors?.password}
+            placeholder={"كلمة المرور"}
+            icon="key-outline"
+            secureTextEntry={true}
+          />
+          {serverErrors?.password && (
+            <ErrorMessage message={serverErrors.password[0]} />
+          )}
+        </View>
+
+        <View className="flex-row justify-center py-2">
+          <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
+          <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword" />
+        </View>
       </View>
-    </View>
 
       {
-    error && !serverErrors && (
-      <ErrorMessage message={error.message} />
-    )
-  }
+        error && !serverErrors && (
+          <ErrorMessage message={error.message} />
+        )
+      }
       <Button title={"تسجيل الدخول"} handleSubmit={handleLogin} />
       <AuthFooter
         title="ليس لديك حساب ؟"

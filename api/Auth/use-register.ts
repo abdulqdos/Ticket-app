@@ -42,7 +42,6 @@ export function useRegister(
 
 
     onSuccess: (data, variables, context) => {
-      queryClient.setQueryData(["currentUser"], data.data);
       options?.onSuccess?.(data, variables, context);
     },
 

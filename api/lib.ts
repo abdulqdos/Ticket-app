@@ -3,7 +3,7 @@ import { Platform } from "react-native";
 
 const BASE_URL = Platform.OS === 'web'
   ? "http://localhost:9000"
-  : "http://10.0.2.2:9000";
+  : process.env.EXPO_PUBLIC_API_URL;
 
 export const apiFetch = async (
   endpoint: string,

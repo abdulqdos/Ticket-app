@@ -1,5 +1,5 @@
-import { useUser } from "@/app/api/Auth/use-user";
-import { useLogout } from "@/app/api/Auth/useLogout";
+import { useUser } from "@/api/Auth/use-user";
+import { useLogout } from "@/api/Auth/useLogout";
 import { Header } from "@/app/components/home";
 import { InfoRow, StatusCard } from "@/app/components/ui/Elements";
 import { colors } from "@/constants/colors";

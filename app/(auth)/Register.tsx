@@ -1,4 +1,4 @@
-import { useRegister } from "@/app/api/Auth/use-register";
+import { useRegister } from "@/api/Auth/use-register";
 import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
 import { useRouter } from "expo-router";
 import { useState } from "react";
@@ -21,7 +21,7 @@ export default function Register() {
       // i will ad d toast later
 
       // redirect
-      router.replace("/(tabs)");
+      router.replace("/(auth)/Login");
     },
   });
 
