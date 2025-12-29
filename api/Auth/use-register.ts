@@ -9,7 +9,6 @@ type RegisterResponse = {
   }
 };
 
-
 export function useRegister(
   options?: UseMutationOptions<RegisterResponse, Error, RegisterInput>
 ) {
@@ -24,19 +23,14 @@ export function useRegister(
         body: JSON.stringify({ phone, password, first_name, last_name, email, password_confirmation }),
       }, true);
 
-
       let data: RegisterResponse;
 
       if (res instanceof Response) {
-        console.log("Response is an instance of Response:", res);
         data = await res.json();
       } else {
-        console.log("Response is not an instance of Response:", res);
         data = res as RegisterResponse;
       }
 
-
-      console.log("Data from Server:", data);
       return data;
     },
 

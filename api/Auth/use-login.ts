@@ -28,29 +28,18 @@ export function useLogin(
       let data: LoginResponse;
 
       if (res instanceof Response) {
-        console.log("Response is an instance of Response:", res);
         data = await res.json();
       } else {
-        console.log("Response is not an instance of Response:", res);
         data = res as LoginResponse;
       }
 
-
-      console.log("Data from Server:", data.data);
       return data;
     },
 
 
 
     onSuccess: async (data) => {
-      console.log("Login successful");
-      console.log("Data received:", data);
       await AsyncStorage.setItem("userToken", data.data.token);
-      console.debug("[useLogin] Token saved to AsyncStorage:", data.data.token);
-
-      const savedToken = await AsyncStorage.getItem("userToken");
-      console.log("Token immediately read back:", savedToken);
-
       queryClient.invalidateQueries({ queryKey: ["currentUser"] });
       options?.onSuccess?.(data, {}, undefined);
 

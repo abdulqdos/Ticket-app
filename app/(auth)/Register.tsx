@@ -1,10 +1,10 @@
 import { useRegister } from "@/api/Auth/use-register";
+import { useToast } from "@/app/components/toast/ToastProvider";
 import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { ScrollView, View } from "react-native";
 import { AuthFooter, AuthHeader } from "../components/Auth";
-
 export default function Register() {
   // Form Inputs
   const [phone, setPhone] = useState("");
@@ -15,10 +15,12 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const router = useRouter();
+  const { show } = useToast();
 
   const { mutate, isPending, error } = useRegister({
     onSuccess: (data) => {
       // i will ad d toast later
+      show("تم انشاء حساب بنجاح", "success", "مرحبًا");
 
       // redirect
       router.replace("/(auth)/Login");

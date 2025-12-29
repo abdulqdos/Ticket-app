@@ -2,6 +2,7 @@ import { useLogin } from "@/api/Auth/use-login";
 import { AuthFooter, AuthHeader } from "@/app/components/Auth";
 import Link from "@/app/components/ui/Elements/Link";
 import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
+import { useToast } from "@/app/components/toast/ToastProvider";
 import { Customer } from "@/constants/customer";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -10,13 +11,16 @@ export default function Login() {
   const [phone, setPhone] = useState(Customer.phone);
   const [password, setPassword] = useState(Customer.passowrd);
   const router = useRouter();
+  const { show } = useToast();
 
-  const { mutate, isPending, error } = useLogin({
+ 
+  const { mutate, isPending, error } = useLogin({ 
     onSuccess: (data) => {
-      // i will add d toast later
-
-      // redirect
+      show("تم تسجيل الدخول بنجاح", "success", "مرحبًا");
       router.replace("/(tabs)");
+    },
+    onError: (error) => {
+      show(error?.message, "error", "خطأ");
     },
   });
 

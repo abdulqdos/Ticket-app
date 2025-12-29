@@ -11,9 +11,12 @@ module.exports = {
         grayLight: "#D9D9D9",
         link: "#3B82F6",
         blue: "#0000ff",
-        success: "#474747",
+        success: "#22bb33",
+        info: "#f0ad4e",
+        danger: "#bb2124"
       },
       plugins: [],
     },
   },
 };
+	

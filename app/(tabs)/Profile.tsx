@@ -6,25 +6,22 @@ import { colors } from "@/constants/colors";
 import { useRouter } from "expo-router";
 import { Alert, ScrollView, Text, View } from "react-native";
 import { Button } from "../components/ui/Form";
-
+import { useToast } from "../components/toast/ToastProvider"; 
 export default function ProfilePage() {
   const router = useRouter();
+  const { show } = useToast();  
 
-  // 1. Initialize the logout mutation
   const { mutate: logout, isPending } = useLogout({
     onSuccess: () => {
-      // Navigate to login only after successful server response
+      show("تم تسجيل الخروج بنجاح", "success", "مرحبًا");
       router.replace("/(auth)/Login");
     },
     onError: (error) => {
-      Alert.alert("خطأ", "فشل تسجيل الخروج، يرجى المحاولة مرة أخرى.");
-      console.error(error);
+      show("فشل تسجيل الخروج  ", "error", "خطأ");
     }
   });
 
   const { data: user, isLoading } = useUser();
-
-  console.log("User Data in ProfilePage:", user);
 
   const handleLogout = () => {
     logout();
