@@ -1,10 +1,8 @@
 Navigation & Layout :
-    - Tabs => (Completed)
     - Splash Screens => (Pending)
     
 Auth :
     - Login  
-        1 - UI Desgine => (Completed)
         2 - Creat Context => (Pending)
         3 - Api Integertion => (Pending)
     
@@ -30,8 +28,8 @@ Auth :
 
     - Auth Notification (Toaster)
         - Add Toster When he :
-            - Success loggin
-            - Success Register
+            - Success loggin => (Completed)
+            - Success Register => (Completed)
             - Success Verify Code
             - Success Reset Password => This most be important after he reset he loggin agani to make him sure for password
 
@@ -55,9 +53,14 @@ Pages :
         - Logout BTN => (Completed)
         
 Context : 
-    - useAuth => (Pending)
+    - useAuth :
+        1. useLogin => (Completed)
+        2. useRegister => (Completed)
+        3. useForgotPassword => (Pending)
+        4. useVerifedCode => (Pending)
+    - useUser => (Completed)
     - useTheme => (Pending)
-    - lang (optional)
+    - lang (Pending)
 
 Constant Models :
     - Customer => (Completed)
@@ -84,3 +87,10 @@ Ui UX :
 
 Proplems :
     - Verfiy Code Page the dir is  rtl but the dir must be ltr => (pending) 
+
+Integrtion Apis : 
+    Login EndPoint => (Completed)
+    Register EndPoint => (Completed)
+    Profile EndPoint => (Pending)
+    Verfie Code EndPoint => (Pending)
+    Forgot Password EndPoint => (Pending)
