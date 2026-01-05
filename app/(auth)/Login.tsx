@@ -16,11 +16,8 @@ export default function Login() {
  
   const { mutate, isPending, error } = useLogin({ 
     onSuccess: (data) => {
-      show("تم تسجيل الدخول بنجاح", "success", "مرحبًا");
+      show("مرحبًا من جديد!", "success", "لقد سجلت دخولك بنجاح. استعد لاستكشاف كل تذاكرك وعروضك المفضلة.");
       router.replace("/(tabs)");
-    },
-    onError: (error) => {
-      show(error?.message, "error", "خطأ");
     },
   });
 
@@ -29,7 +26,6 @@ export default function Login() {
   const handleLogin = () => {
     // Api Calling
     mutate({ phone, password });
-
   };
 
   return (

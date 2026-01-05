@@ -2,14 +2,16 @@ Navigation & Layout :
     - Splash Screens => (Pending)
     
 Auth :
+
     - Login  
-        2 - Creat Context => (Pending)
-        3 - Api Integertion => (Pending)
+        1 - UI Desgine => (Completed)
+        2 - Creat Context => (Completed)
+        3 - Api Integertion => (Complete)
     
     - Signup
         1 - UI Desgine => (Completed)
-        2 - Creat Context => (Pending)
-        3 - Api Integertion => (Pending)
+        2 - Creat Context => (Completed)
+        3 - Api Integertion => (Complete)
     
     - Forgget the password
         1 - UI Desgine => (Completed)
@@ -34,6 +36,7 @@ Auth :
             - Success Reset Password => This most be important after he reset he loggin agani to make him sure for password
 
 Pages :
+    
     - Home Page :
         - Tab Icon (Completed)
         - Add Header (Completed)
@@ -53,6 +56,7 @@ Pages :
         - Logout BTN => (Completed)
         
 Context : 
+    
     - useAuth :
         1. useLogin => (Completed)
         2. useRegister => (Completed)
@@ -63,15 +67,17 @@ Context :
     - lang (Pending)
 
 Constant Models :
-    - Customer => (Completed)
-    - Colors => (Completed)
-    - Event => (Pending)
-    - Ticket Type => (Pending)
-    - Ticket => (Pending)
-    - City => (Pending)
-    - Compeny => (Pending)
+
+        - Customer => (Completed)
+        - Colors => (Completed)
+        - Event => (Pending)
+        - Ticket Type => (Pending)
+        - Ticket => (Pending)
+        - City => (Pending)
+        - Compeny => (Pending)
 
 Types : 
+
     - Customer => (Completed)
     - Event => (Completed)
     - Ticket Type => (Completed)
@@ -80,15 +86,19 @@ Types :
     - Compeny => (Completed)
 
 Data : 
+
     - Create a file have dumb data to test => (Completed)
 
 Ui UX :
+
     - We Need Logo (Pending)
 
 Proplems :
+
     - Verfiy Code Page the dir is  rtl but the dir must be ltr => (pending) 
 
 Integrtion Apis : 
+
     Login EndPoint => (Completed)
     Register EndPoint => (Completed)
     Profile EndPoint => (Pending)

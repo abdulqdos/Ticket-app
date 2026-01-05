@@ -2,7 +2,7 @@ import { useUser } from "@/api/Auth/use-user";
 import { colors } from "@/constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { ActivityIndicator, Image, Text, View } from "react-native";
+import { ActivityIndicator, Alert, Image, Text, View } from "react-native";
 
 export default function Header() {
   const { data: user, isLoading } = useUser();
@@ -14,19 +14,22 @@ export default function Header() {
       </View>
     );
   }
+  
 
   return (
     <View className="flex-row justify-between items-center px-4 bg-white rounded-2xl border border-textGray/20">
       <View className="flex-row items-center gap-2 py-2">
         <Image
-          source={
-            user?.profile_image
-              ? { uri: user.profile_image }
-              : require("@/assets/images/profile.jpg")
-          }
+            source={
+              user?.data?.profile_image
+                ? { uri: user.data.profile_image }
+                : require("@/assets/images/profile.jpg")
+            }
 
           className="w-16 h-16 rounded-full border border-lightGray"
         />
+
+ 
 
         <View>
           <Text className="text-lg font-semibold text-gray-900">

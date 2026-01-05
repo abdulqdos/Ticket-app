@@ -43,14 +43,14 @@ export const ToastProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
 
       {toast.visible && (
-        <View className={`"text-lg absolute top-12 left-4 right-4 z-50" ${toast.type === "error" ? "bg-danger/20 border-danger" : toast.type === "success" ? "bg-success/20 border-success" : "bg-info/20 border-info" } `}>
+        <View className={`"text-lg absolute top-12 left-4 right-4 z-50" ${toast.type === "error" ? "bg-red-100 border-danger" : toast.type === "success" ? "bg-green-100 border-success" : "bg-yellow-100 border-info" } `}>
           <Alert
             icon={icons[toast.type]}
             iconClassName={`${toast.type === "error" ? "text-danger" : toast.type === "success" ? "text-success" : "text-foreground"}`}
             variant={toast.type === "error" ? "destructive" : "default"}
             className={`${toast.type === "error" ? "border-danger" : toast.type === "success" ? "border-success" : "border-info"}`}
           >
-            <AlertTitle className={`${toast.type === "error" ? "text-danger" : toast.type === "success" ? "text-success" : "text-foreground" } "text-lg"`}>
+            <AlertTitle className={`${toast.type === "error" ? "text-danger" : toast.type === "success" ? "text-success" : "text-foreground" } "text-2xl"`}>
               {toast.title}
             </AlertTitle>
 

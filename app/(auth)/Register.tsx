@@ -20,9 +20,7 @@ export default function Register() {
   const { mutate, isPending, error } = useRegister({
     onSuccess: (data) => {
       // i will ad d toast later
-      show("تم انشاء حساب بنجاح", "success", "مرحبًا");
-
-      // redirect
+      show("كل شيء جاهز!", "success", "تم إنشاء حسابك بنجاح. ابدأ الآن بحجز تذاكرك واستمتع بتجربتك.");
       router.replace("/(auth)/Login");
     },
   });
