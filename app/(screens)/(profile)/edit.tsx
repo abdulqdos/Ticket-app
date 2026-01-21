@@ -1,5 +1,5 @@
 import { useUser } from "@/api/Auth/use-user";
-import { useEditProfile } from "@/api/Profile/useEditProfile";
+import { useEditProfile } from "@/api/Profile/use-edit-profile";
 import { useToast } from "@/app/components/toast/ToastProvider";
 import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
 import { colors } from "@/constants/colors";

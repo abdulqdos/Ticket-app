@@ -25,7 +25,8 @@ export default function Login() {
 
   const handleLogin = () => {
     // Api Calling
-    mutate({ phone, password });
+    // mutate({ phone, password });
+     router.replace("/(tabs)"); // just for now to make debugging easier
   };
 
   return (

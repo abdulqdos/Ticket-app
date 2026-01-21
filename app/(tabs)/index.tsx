@@ -1,13 +1,12 @@
+import { Body, Hero } from "@/app/components/home";
 import React from "react";
-import { Text, View } from "react-native";
-import {Header , Search , Body } from "@/app/components/home";
-
+import { View } from "react-native";
 
 export default function Index() {
   return (
-    <View className="page gap-4">
-      <View className="flex flex-col w-full gap-4 pt-10  px-4 shadow-md">
-        <Header />
+    <View className="page gap-8">
+      <View className="flex flex-col w-full">
+        <Hero />
       </View>
       <View className="flex-1">
         <Body />
