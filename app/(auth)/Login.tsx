@@ -1,8 +1,8 @@
 import { useLogin } from "@/api/Auth/use-login";
 import { AuthFooter, AuthHeader } from "@/app/components/Auth";
+import { useToast } from "@/app/components/toast/ToastProvider";
 import Link from "@/app/components/ui/Elements/Link";
 import { Button, ErrorMessage, Input } from "@/app/components/ui/Form";
-import { useToast } from "@/app/components/toast/ToastProvider";
 import { Customer } from "@/constants/customer";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
@@ -13,8 +13,8 @@ export default function Login() {
   const router = useRouter();
   const { show } = useToast();
 
- 
-  const { mutate, isPending, error } = useLogin({ 
+
+  const { mutate, isPending, error } = useLogin({
     onSuccess: (data) => {
       show("مرحبًا من جديد!", "success", "لقد سجلت دخولك بنجاح. استعد لاستكشاف كل تذاكرك وعروضك المفضلة.");
       router.replace("/(tabs)");
@@ -25,8 +25,7 @@ export default function Login() {
 
   const handleLogin = () => {
     // Api Calling
-    // mutate({ phone, password });
-     router.replace("/(tabs)"); // just for now to make debugging easier
+    mutate({ phone, password });
   };
 
   return (
@@ -63,8 +62,8 @@ export default function Login() {
         </View>
 
         <View className="flex-row justify-center py-2">
-          <Text className="text-gray-500">هل نسيت كلمة المرور ؟ </Text>
-          <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword" />
+          <Text className="text-textGray">هل نسيت كلمة المرور ؟ </Text>
+          <Link title="استعادة كلمة المرور" url="/(auth)/ForgotPassword" color="text-surface" />
         </View>
       </View>
 
@@ -73,7 +72,7 @@ export default function Login() {
           <ErrorMessage message={error.message} />
         )
       }
-      <Button title={"تسجيل الدخول"} handleSubmit={handleLogin} />
+      <Button title={"تسجيل الدخول"} handleSubmit={handleLogin} classes="mt-4 bg-primary text-surface" />
       <AuthFooter
         title="ليس لديك حساب ؟"
         urlTitle="إنشاء حساب"

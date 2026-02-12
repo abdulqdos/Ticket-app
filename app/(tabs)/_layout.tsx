@@ -1,18 +1,18 @@
-import { colors , hexToRgba } from "@/constants/colors";
+import { colors } from "@/constants/colors";
 import { Ionicons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 import React from "react";
 
 export default function _layout() {
   return (
-    <Tabs                                                                                                                                                                                          
+    <Tabs
       screenOptions={{
         tabBarInactiveTintColor: colors.grayLight,
         tabBarActiveTintColor: colors.white,
-        tabBarHideOnKeyboard: false, 
+        tabBarHideOnKeyboard: false,
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: hexToRgba(colors.black , 0.7),
+          backgroundColor: colors.primary,
           marginHorizontal: 16,
           marginVertical: 8,
           borderRadius: 50,
@@ -29,7 +29,7 @@ export default function _layout() {
           shadowRadius: 0,
           elevation: 0, // Android
         },
-        tabBarLabelStyle: { fontSize: 8 },   
+        tabBarLabelStyle: { fontSize: 8 },
       }}
     >
       <Tabs.Screen
@@ -52,7 +52,7 @@ export default function _layout() {
           ),
         }}
       />
-        <Tabs.Screen
+      <Tabs.Screen
         name="Favorites"
         options={{
           headerShown: false,

@@ -2,23 +2,23 @@
 // direct oo drawer after 2 sec
 
 import {
-    StatusBar,
-    Text,
-    View
-} from "react-native";
+    useRouter
+} from "expo-router";
 import {
     useEffect
 } from "react";
 import {
-    useRouter
-} from "expo-router";
+    StatusBar,
+    Text,
+    View
+} from "react-native";
 
 
 export default function Splash() {
 
     const router = useRouter();
 
-      useEffect(() => {
+    useEffect(() => {
         const time = setTimeout(() => {
             // @ts-ignore
             return router.replace("/(auth)/Login");
@@ -27,27 +27,13 @@ export default function Splash() {
 
 
     return (
-            <View
-                    style={{
-                        flex: 1,
-                        justifyContent: "center",
-                        alignItems: "center",
-                        backgroundColor: "#000000",
+        <View className="flex-1 justify-center items-center bg-primary">
+            <StatusBar hidden={true} />
 
-                    }}
-            >
-                <StatusBar hidden={true}/>
-
-                <Text style={{
-                    color: "orange",
-                    fontSize: 30,
-                    fontWeight: "bold"
-                }}>
-                    TODO
-                    App
-                </Text>
-
-
-            </View>
+            <Text className="text-white text-3xl font-bold">
+                TODO
+                App
+            </Text>
+        </View>
     );
 }
