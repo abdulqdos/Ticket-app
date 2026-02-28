@@ -4,7 +4,7 @@ import { Text } from "react-native";
 type PriceProps = { prices: number[]; event: any };
 
 export default function Price({ prices, event }: PriceProps) {
-  if (event.ticketTypes.length === 0) {
+  if (!prices || prices.length === 0) {
     return (
       <Text className="text-sm text-gray-500 mt-1">No tickets available</Text>
     );

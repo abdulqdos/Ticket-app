@@ -27,7 +27,7 @@ export default function Section({
         showsHorizontalScrollIndicator={false}
       >
         <View className="flex flex-row flex-wrap justify-between gap-4">
-          {data.map((item) => (
+          {data?.map((item) => (
             <Card key={item.id} event={item} />
           ))}
         </View>
