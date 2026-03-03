@@ -7,7 +7,7 @@ export function useEvents() {
     queryFn: async () => {
       return await apiFetch("api/v1/events", {
         method: "GET",
-      }, true, true);
+      }, true);
     },
     enabled: true
   });
