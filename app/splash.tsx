@@ -8,11 +8,11 @@ import {
     useEffect
 } from "react";
 import {
+    Image,
     StatusBar,
     Text,
     View
 } from "react-native";
-
 
 export default function Splash() {
 
@@ -30,10 +30,13 @@ export default function Splash() {
         <View className="flex-1 justify-center items-center bg-primary">
             <StatusBar hidden={true} />
 
-            <Text className="text-white text-3xl font-bold">
-                TODO
-                App
-            </Text>
+            <View>
+                <Image
+                    source={require("@/assets/images/logo.png")}
+                    className="w-96 h-96"
+                />
+            </View>
+
         </View>
     );
 }
