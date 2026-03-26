@@ -1,18 +1,17 @@
-import { colors } from "@/constants/colors";
-import { ONBOARDING } from "@/constants/onboarding";
-import { Ionicons } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
+import { ONBOARDING, type OnboardingItemType } from "@/constants/onboarding";
 import React, { useRef, useState } from "react";
 import {
     Animated,
+    Dimensions,
     FlatList,
     StyleSheet,
     Text,
     TouchableOpacity,
     View,
 } from "react-native";
-import Paginator from "./Paginator";
 import OnboardingItem from "./onboardingItem";
+
+const { width } = Dimensions.get("window");
 
 type Props = {
     onDone?: () => void;
@@ -37,188 +36,110 @@ const Onboarding: React.FC<Props> = ({ onDone }) => {
         }
     };
 
-    const skipToEnd = () => {
-        onDone?.();
-    };
+    const isLastScreen = currentIndex === ONBOARDING.length - 1;
 
     return (
         <View style={styles.container}>
-            <LinearGradient
-                colors={[colors.grayLight, colors.white]}
-                style={styles.background}
-            />
-
-            {currentIndex < ONBOARDING.length - 1 && (
-                <TouchableOpacity style={styles.skipButtonTop} onPress={skipToEnd}>
-                    <Text style={styles.skipTextTop}>تصفح كضيف</Text>
-                </TouchableOpacity>
-            )}
-
-            <FlatList
-                data={ONBOARDING}
-                renderItem={({ item, index }) => (
-                    <OnboardingItem
-                        item={item}
-                        index={index}
-                        currentIndex={currentIndex}
-                    />
-                )}
-                horizontal
-                pagingEnabled
-                showsHorizontalScrollIndicator={false}
-                bounces={false}
-                keyExtractor={(item) => item.id.toString()}
-                onScroll={Animated.event(
-                    [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-                    { useNativeDriver: false }
-                )}
-                onViewableItemsChanged={viewableItemsChanged}
-                viewabilityConfig={viewConfig}
-                scrollEventThrottle={32}
-                ref={slidesRef}
-            />
-
-            <View style={styles.footer}>
-                <Paginator
+            <View style={{ flex: 1 }}>
+                <Animated.FlatList
                     data={ONBOARDING}
-                    scrollX={scrollX}
-                    currentIndex={currentIndex}
-                />
-
-                <View style={styles.buttonsContainer}>
-                    {currentIndex === ONBOARDING.length - 1 ? (
-                        <TouchableOpacity
-                            style={styles.getStartedButton}
-                            onPress={onDone}
-                            activeOpacity={0.8}
-                        >
-                            <LinearGradient
-                                colors={[colors.primary, colors.grayLight]}
-                                style={styles.gradientButton}
-                                start={{ x: 0, y: 0 }}
-                                end={{ x: 1, y: 0 }}
-                            >
-                                <Text style={styles.getStartedText}>ابدأ التصفح</Text>
-                                <Ionicons name="rocket-outline" size={20} color="white" />
-                            </LinearGradient>
-                        </TouchableOpacity>
-                    ) : (
-                        <View style={styles.navigationRow}>
-                            <TouchableOpacity
-                                style={styles.nextButton}
-                                onPress={scrollTo}
-                                activeOpacity={0.8}
-                            >
-                                <LinearGradient
-                                    colors={[colors.primary, colors.success]}
-                                    style={styles.gradientCircle}
-                                    start={{ x: 0, y: 0 }}
-                                    end={{ x: 1, y: 1 }}
-                                >
-                                    <Ionicons name="arrow-forward" size={24} color="white" />
-                                </LinearGradient>
-                            </TouchableOpacity>
-
-                            <TouchableOpacity
-                                style={styles.skipButton}
-                                onPress={skipToEnd}
-                                activeOpacity={0.7}
-                            >
-                                <Text style={styles.skipText}>تصفح كضيف</Text>
-                            </TouchableOpacity>
-                        </View>
+                    renderItem={({ item }) => <OnboardingItem item={item} />}
+                    horizontal
+                    showsHorizontalScrollIndicator={false}
+                    pagingEnabled
+                    bounces={false}
+                    keyExtractor={(item: OnboardingItemType) => item.id.toString()}
+                    onScroll={Animated.event(
+                        [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+                        { useNativeDriver: false }
                     )}
+                    scrollEventThrottle={32}
+                    onViewableItemsChanged={viewableItemsChanged}
+                    viewabilityConfig={viewConfig}
+                    ref={slidesRef}
+                />
+            </View>
+
+            <View style={styles.bottomContainer}>
+                <View style={styles.dotsContainer}>
+                    {ONBOARDING.map((_, i) => {
+                        const inputRange = [(i - 1) * width, i * width, (i + 1) * width];
+
+                        const dotWidth = scrollX.interpolate({
+                            inputRange,
+                            outputRange: [10, 20, 10],
+                            extrapolate: "clamp",
+                        });
+
+                        const opacity = scrollX.interpolate({
+                            inputRange,
+                            outputRange: [0.5, 1, 0.5],
+                            extrapolate: "clamp",
+                        });
+
+                        return (
+                            <Animated.View
+                                style={[styles.dot, { width: dotWidth, opacity }]}
+                                key={i.toString()}
+                            />
+                        );
+                    })}
                 </View>
+
+                <TouchableOpacity activeOpacity={0.8} onPress={scrollTo} style={styles.button}>
+                    <Text style={styles.buttonText}>
+                        {isLastScreen ? "Get Started" : "Next"}
+                    </Text>
+                </TouchableOpacity>
             </View>
         </View>
     );
 };
 
+export default Onboarding;
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.white,
+        backgroundColor: "#fff",
     },
-    background: {
-        position: "absolute",
+    bottomContainer: {
+        position: 'absolute',
+        bottom: 50,
         left: 0,
         right: 0,
-        top: 0,
-        bottom: 0,
-    },
-    skipButtonTop: {
-        position: "absolute",
-        top: 60,
-        right: 24,
-        zIndex: 10,
-        padding: 12,
-    },
-    skipTextTop: {
-        color: colors.grayLight,
-        fontSize: 16,
-        fontWeight: "600",
-    },
-    footer: {
-        position: "absolute",
-        bottom: 60,
-        left: 0,
-        right: 0,
-        paddingHorizontal: 24,
-    },
-    buttonsContainer: {
-        marginTop: 32,
-    },
-    navigationRow: {
-        flexDirection: "row-reverse",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
-    skipButton: {
-        paddingVertical: 16,
-        paddingHorizontal: 24,
-    },
-    skipText: {
-        color: colors.grayLight,
-        fontSize: 16,
-        fontWeight: "600",
-    },
-    nextButton: {
-        shadowColor: colors.primary,
-        shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 0.3,
-        shadowRadius: 16,
-        elevation: 8,
-    },
-    gradientCircle: {
-        width: 70,
-        height: 70,
-        borderRadius: 35,
         justifyContent: "center",
         alignItems: "center",
+        paddingHorizontal: 20,
     },
-    getStartedButton: {
-        borderRadius: 20,
-        overflow: "hidden",
-        shadowColor: colors.primary,
-        shadowOffset: { width: 0, height: 8 },
-        shadowOpacity: 0.3,
-        shadowRadius: 16,
-        elevation: 8,
-    },
-    gradientButton: {
-        paddingVertical: 20,
-        paddingHorizontal: 32,
-        flexDirection: "row-reverse",
-        alignItems: "center",
+    dotsContainer: {
+        flexDirection: "row",
         justifyContent: "center",
-        borderRadius: 20,
+        alignItems: "center",
+        marginBottom: 30,
     },
-    getStartedText: {
-        color: colors.white,
+    dot: {
+        height: 10,
+        borderRadius: 5,
+        backgroundColor: "#fff",
+        marginHorizontal: 8,
+    },
+    button: {
+        backgroundColor: "#fff",
+        paddingVertical: 15,
+        paddingHorizontal: 30,
+        borderRadius: 30,
+        width: "100%",
+        alignItems: "center",
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.1,
+        shadowRadius: 5,
+        elevation: 3,
+    },
+    buttonText: {
+        color: "#000",
         fontSize: 18,
-        fontWeight: "700",
-        marginLeft: 8,
+        fontWeight: "bold",
     },
 });
-
-export default Onboarding;

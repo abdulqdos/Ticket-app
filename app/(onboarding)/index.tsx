@@ -1,4 +1,4 @@
-import Onboarding from "@/app/components/onboarding/onboarding";
+import  Onboarding  from "@/app/components/onboarding/Onboarding";
 import { useRouter } from "expo-router";
 import React from "react";
 import { StatusBar, StyleSheet, View } from "react-native";
@@ -7,7 +7,7 @@ const OnboardingScreen: React.FC = () => {
   const router = useRouter();
 
   const handleDone = () => {
-    router.replace("/(tabs)/home");
+    router.replace("/(auth)/Login");
   };
 
   return (
