@@ -4,7 +4,6 @@ import {
     Animated,
     Dimensions,
     FlatList,
-    StyleSheet,
     Text,
     TouchableOpacity,
     View,
@@ -39,8 +38,8 @@ const Onboarding: React.FC<Props> = ({ onDone }) => {
     const isLastScreen = currentIndex === ONBOARDING.length - 1;
 
     return (
-        <View style={styles.container}>
-            <View style={{ flex: 1 }}>
+        <View className="flex-1 bg-white">
+            <View className="flex-1">
                 <Animated.FlatList
                     data={ONBOARDING}
                     renderItem={({ item }) => <OnboardingItem item={item} />}
@@ -50,7 +49,14 @@ const Onboarding: React.FC<Props> = ({ onDone }) => {
                     bounces={false}
                     keyExtractor={(item: OnboardingItemType) => item.id.toString()}
                     onScroll={Animated.event(
-                        [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+                        [
+                            { 
+                                nativeEvent: 
+                                {
+                                     contentOffset: { x: scrollX }
+                                }
+                            }
+                        ],
                         { useNativeDriver: false }
                     )}
                     scrollEventThrottle={32}
@@ -60,8 +66,8 @@ const Onboarding: React.FC<Props> = ({ onDone }) => {
                 />
             </View>
 
-            <View style={styles.bottomContainer}>
-                <View style={styles.dotsContainer}>
+            <View className="absolute bottom-[50px] left-0 right-0 justify-center items-center px-5">
+                <View className="flex-row justify-center items-center mb-[30px]">
                     {ONBOARDING.map((_, i) => {
                         const inputRange = [(i - 1) * width, i * width, (i + 1) * width];
 
@@ -79,15 +85,16 @@ const Onboarding: React.FC<Props> = ({ onDone }) => {
 
                         return (
                             <Animated.View
-                                style={[styles.dot, { width: dotWidth, opacity }]}
+                                style={[{ width: dotWidth, opacity, backgroundColor: 'white' }]}
+                                className="h-2.5 rounded-full mx-2"
                                 key={i.toString()}
                             />
                         );
                     })}
                 </View>
 
-                <TouchableOpacity activeOpacity={0.8} onPress={scrollTo} style={styles.button}>
-                    <Text style={styles.buttonText}>
+                <TouchableOpacity activeOpacity={0.8} onPress={scrollTo} className="bg-white py-[15px] px-[30px] rounded-[30px] w-full items-center shadow-md shadow-black/10">
+                    <Text className="text-black text-[18px] font-bold">
                         {isLastScreen ? "Get Started" : "Next"}
                     </Text>
                 </TouchableOpacity>
@@ -97,49 +104,3 @@ const Onboarding: React.FC<Props> = ({ onDone }) => {
 };
 
 export default Onboarding;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-    },
-    bottomContainer: {
-        position: 'absolute',
-        bottom: 50,
-        left: 0,
-        right: 0,
-        justifyContent: "center",
-        alignItems: "center",
-        paddingHorizontal: 20,
-    },
-    dotsContainer: {
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: 30,
-    },
-    dot: {
-        height: 10,
-        borderRadius: 5,
-        backgroundColor: "#fff",
-        marginHorizontal: 8,
-    },
-    button: {
-        backgroundColor: "#fff",
-        paddingVertical: 15,
-        paddingHorizontal: 30,
-        borderRadius: 30,
-        width: "100%",
-        alignItems: "center",
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-        elevation: 3,
-    },
-    buttonText: {
-        color: "#000",
-        fontSize: 18,
-        fontWeight: "bold",
-    },
-});
