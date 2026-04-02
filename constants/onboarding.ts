@@ -19,29 +19,30 @@ export type OnboardingItemType = {
 export const ONBOARDING: OnboardingItemType[] = [
     {
         id: 1,
-        title: "مرحبا بك في تطبيقنا",
-        description: "هذا هو أول شاشة في التطبيق",
+        title: "الاكتشاف",
+        description: "اكتشف فعاليات مهمة حولك\nدورات، معارض، مؤتمرات… في مكان واحد",
         icon: "medkit-outline",
         color: "white",
         backgroundColor: "#EDFFFC",
-        image: require("@/assets/images/logo.png")
+        image: require("@/assets/images/screen_1.png")
     },
     {
         id: 2,
-        title: "Screen 2",
-        description: "This is the second screen. You are doing great.",
+        title: "القرب والتخصيص",
+        description: "فعاليات تناسب اهتماماتك وموقعك\nنوصل لك الأفضل حسب اختيارك",
         icon: "bicycle-outline",
         color: "green",
         backgroundColor: "#EDFFFC",
-        image: require("@/assets/images/logo.png"),
+        image: require("@/assets/images/screen_2.png"),
     },
     {
         id: 3,
-        title: "Screen 3",
-        description: "This is the third and final onboarding screen.",
+        title: "الحجز السريع",
+        description: "احجز بسهولة وفي ثواني\nبدون تعقيد أو خطوات كثيرة",
         icon: "document-attach-outline",
         color: "yellow",
         backgroundColor: "#EDFFFC",
-        image: require("@/assets/images/logo.png"),
+        image: require("@/assets/images/screen_3.png"),
     },
 ];
+

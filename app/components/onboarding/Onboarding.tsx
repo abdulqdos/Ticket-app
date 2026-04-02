@@ -50,10 +50,10 @@ const Onboarding: React.FC<Props> = ({ onDone }) => {
                     keyExtractor={(item: OnboardingItemType) => item.id.toString()}
                     onScroll={Animated.event(
                         [
-                            { 
-                                nativeEvent: 
+                            {
+                                nativeEvent:
                                 {
-                                     contentOffset: { x: scrollX }
+                                    contentOffset: { x: scrollX }
                                 }
                             }
                         ],
@@ -73,29 +73,30 @@ const Onboarding: React.FC<Props> = ({ onDone }) => {
 
                         const dotWidth = scrollX.interpolate({
                             inputRange,
-                            outputRange: [10, 20, 10],
+                            outputRange: i === 0 ? [20, 20, 10] : [10, 20, 10],
                             extrapolate: "clamp",
                         });
 
+
                         const opacity = scrollX.interpolate({
                             inputRange,
-                            outputRange: [0.5, 1, 0.5],
+                            outputRange: i === 0 ? [1, 1, 0.5] : [0.5, 1, 0.5],
                             extrapolate: "clamp",
                         });
 
                         return (
                             <Animated.View
-                                style={[{ width: dotWidth, opacity, backgroundColor: 'white' }]}
-                                className="h-2.5 rounded-full mx-2"
+                                style={[{ width: dotWidth, opacity }]}
+                                className="h-2.5 rounded-full mx-2 bg-primary"
                                 key={i.toString()}
                             />
                         );
                     })}
                 </View>
 
-                <TouchableOpacity activeOpacity={0.8} onPress={scrollTo} className="bg-white py-[15px] px-[30px] rounded-[30px] w-full items-center shadow-md shadow-black/10">
-                    <Text className="text-black text-[18px] font-bold">
-                        {isLastScreen ? "Get Started" : "Next"}
+                <TouchableOpacity activeOpacity={0.8} onPress={scrollTo} className="bg-primary py-[15px] px-[30px] rounded-[30px] w-full items-center shadow-md shadow-black/10">
+                    <Text className="text-white text-[18px] font-bold">
+                        {isLastScreen ? "ابدأ" : "التالي"}
                     </Text>
                 </TouchableOpacity>
             </View>

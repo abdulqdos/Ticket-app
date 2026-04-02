@@ -1,8 +1,7 @@
 import { type OnboardingItemType } from "@/constants/onboarding";
 import React from "react";
-import { Dimensions, Text, View , Image} from "react-native";
+import { Dimensions, Image, Text, View } from "react-native";
 
-import Svg, { SvgUri } from "react-native-svg";
 const { width } = Dimensions.get("window");
 
 type Props = {
@@ -10,39 +9,30 @@ type Props = {
 };
 
 
-
-
 const OnboardingItem = ({ item }: Props) => {
   return (
     <View
       style={{ width, backgroundColor: item.backgroundColor }}
-      className="flex-1 flex-row"
+      className="flex flex-col"
     >
+
+      {/* TEXT SIDE */}
+      <View
+        style={{ flex: 1, padding: 20, backgroundColor: item.backgroundColor }}
+        className="top- h-[20%] ml-40 mt-40"
+      >
+        <Text className="text-4xl font-bold text-primary mb-3">{item.title}</Text>
+        <Text className="text-base text-primary/80 leading-relaxed">{item.description}</Text>
+      </View>
+
+
       {/* IMAGE SIDE */}
-      <View className="w-2/3 justify-center items-center">
-        {/* {item.image ? (
-          <SvgUri
-            width="100%"
-            height="80%"
-            uri={item.image}
-          />
-        ) : null} */}
+      <View className="flex-1  justify-center items-center mr-40 mb-40">
         <Image
           source={item.image || require("@/assets/images/logo.png")}
           style={{ width: "100%", height: "80%" }}
           resizeMode="contain"
         />
-      </View>
-
-      {/* TEXT SIDE */}
-      <View className="w-1/3 justify-center px-4">
-        <Text className="text-3xl font-bold text-black mb-3">
-          {item.title}
-        </Text>
-
-        <Text className="text-base text-gray-700 leading-relaxed">
-          {item.description}
-        </Text>
       </View>
     </View>
   );
